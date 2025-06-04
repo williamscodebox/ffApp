@@ -1,10 +1,11 @@
 import React from "react";
 import ScrollTriggered from "../components/ScrollTriggered";
+import ScrollCard from "../components/ScrollCard";
 
 const ErrorPage = () => {
   return (
     <div>
-      <ScrollTriggered />
+      <ScrollCard />
     </div>
   );
 };
