@@ -5,3 +5,11 @@
     display: none;
   }
 }
+
+.home-bg {
+  background-image: url("Home.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 200vh;
+  width: 100%;
+}
