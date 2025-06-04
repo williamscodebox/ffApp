@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* use for picking gradients https://cssgradient.io/ */
+
 .custom {
   @media (width <= 40rem /* 640px */) {
     display: none;
