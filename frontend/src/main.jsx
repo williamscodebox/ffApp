@@ -14,6 +14,8 @@ import Register from "./pages/Auth/Register.jsx";
 // Auth
 
 //Restricted
+import PrivateRoute from "./pages/Auth/PrivateRoute.jsx";
+import Overview from "./pages/Auth/Overview.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +23,10 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/overview" element={<Overview />} />
+      </Route>
     </Route>
   )
 );
