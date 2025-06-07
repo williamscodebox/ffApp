@@ -1,7 +1,12 @@
-import React from "react";
+import Weeklies from "./Weeklies";
 
 const Overview = () => {
-  return <div>Overview</div>;
+  return (
+    <div className="mt-20">
+      Overview
+      <Weeklies />
+    </div>
+  );
 };
 
 export default Overview;
