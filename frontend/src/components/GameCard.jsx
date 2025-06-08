@@ -7,16 +7,16 @@ const GameCard = ({ teamA, teamB, date }) => {
         <p>{date}</p>
       </div>
       <div className="flex flex-row items-center w-[40%]">
-        <div className="w-[68%]">
-          <button className="border-1 p-2 pt-1 pb-1.5 text-xl rounded-2xl bg-green-600 hover:cursor-pointer">
+        <div className="flex justify-end w-[58%]">
+          <button className="border-1 p-2 pt-1 pb-1.5 text-xl w-35 rounded-2xl {/*bg-green-600*/} bg-gray-800 text-white hover:cursor-pointer">
             {teamA}
           </button>
         </div>
-        <div className="w-[42%]">
+        <div className="flex items-center justify-center w-[42%]">
           <p>vs</p>
         </div>
         <div className="w-[58%]">
-          <button className="border-1 p-2 pt-1 pb-1.5 text-xl rounded-2xl bg-gray-800 text-white hover:cursor-pointer">
+          <button className="border-1 p-2 pt-1 pb-1.5 text-xl w-35 rounded-2xl bg-gray-800 text-white hover:cursor-pointer">
             {teamB}
           </button>
         </div>
