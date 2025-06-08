@@ -144,4 +144,28 @@ export const schedule = [
     TeamsPlaying: [teams[30], teams[31]],
     time: "4:05pm",
   },
+  {
+    date: week[0][0] + " " + week[0][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[21], teams[22]],
+    time: "4:25pm",
+  },
+  {
+    date: week[0][0] + " " + week[0][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[8], teams[29]],
+    time: "4:25pm",
+  },
+  {
+    date: week[0][0] + " " + week[0][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[4], teams[0]],
+    time: "8:20pm",
+  },
+  {
+    date: week[0][0] + " " + week[0][5],
+    dayOf: day[4],
+    TeamsPlaying: [teams[23], teams[20]],
+    time: "1:00pm",
+  },
 ];
