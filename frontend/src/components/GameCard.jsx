@@ -1,0 +1,22 @@
+import React from "react";
+
+const GameCard = ({ teamA, teamB, date }) => {
+  return (
+    <div className="flex flex-row gap-2 text-2xl items-center justify-between w-[80%] ml-20">
+      <div>
+        <p>{date}</p>
+      </div>
+      <div className="flex flex-row items-center gap-14">
+        <button className="border-1 p-2 pt-1 pb-1.5 text-xl rounded-2xl bg-green-600 hover:cursor-pointer ">
+          {teamA}
+        </button>
+        <p>vs</p>
+        <button className="border-1 p-2 pt-1 pb-1.5 text-xl rounded-2xl bg-gray-800 text-white hover:cursor-pointer ">
+          {teamB}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default GameCard;

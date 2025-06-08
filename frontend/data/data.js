@@ -65,7 +65,7 @@ export const week = [
 ];
 
 const game = {
-  weekOf: week[0],
+  date: week[(0)[0]] + week[(0)[1]],
   dayOf: day[0],
   TeamsPlaying: [teams[16], teams[18]],
   time: "8:20pm",
