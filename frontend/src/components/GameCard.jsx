@@ -3,7 +3,7 @@ import React from "react";
 const GameCard = ({ teamA, teamB, date }) => {
   return (
     <div className="flex flex-row gap-2 text-2xl items-center justify-between w-[80%] ml-20">
-      <div className="w-[20%]">
+      <div className="w-[30%]">
         <p>{date}</p>
       </div>
       <div className="flex flex-row items-center w-[40%]">
@@ -12,10 +12,10 @@ const GameCard = ({ teamA, teamB, date }) => {
             {teamA}
           </button>
         </div>
-        <div className="w-[38%]">
+        <div className="w-[42%]">
           <p>vs</p>
         </div>
-        <div className="w-[45%]">
+        <div className="w-[58%]">
           <button className="border-1 p-2 pt-1 pb-1.5 text-xl rounded-2xl bg-gray-800 text-white hover:cursor-pointer">
             {teamB}
           </button>
