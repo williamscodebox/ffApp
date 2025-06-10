@@ -2,14 +2,18 @@ import * as motion from "motion/react-client";
 
 const ScrollCard = () => {
   return (
-    <div style={container} className="h-[200vh]">
+    <div
+      style={container}
+      className="h-[100vh] opacity-90 rounded-2xl border-white border-1"
+    >
       <Card />
     </div>
   );
 };
 
 function Card() {
-  const background = `linear-gradient(306deg, ${hue(222)}, ${hue(10)})`;
+  // const background = `linear-gradient(306deg, ${hue(222)}, ${hue(10)})`;
+  const background = "#1e2939";
 
   return (
     <motion.div
@@ -55,8 +59,8 @@ const football = {
 
 const container = {
   margin: "100px auto",
-  maxWidth: 500,
-  paddingBottom: 100,
+  maxWidth: 1000,
+  paddingBottom: 80,
   width: "100%",
   background: "#1e2939",
 };

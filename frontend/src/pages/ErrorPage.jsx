@@ -8,8 +8,7 @@ const ErrorPage = () => {
   const dispatch = useDispatch();
   return (
     <div>
-      {/* <ScrollCard /> */}
-      {teams[2]}
+      <ScrollCard />
     </div>
   );
 };

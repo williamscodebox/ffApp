@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import InformationCard from "../components/InformationCard";
 import WelcomeCard from "../components/WelcomeCard";
+import ScrollCard from "../components/ScrollCard";
 
 function Home() {
   return (
@@ -26,6 +27,9 @@ function Home() {
       >
         <WelcomeCard />
       </motion.div> */}
+      <div>
+        <ScrollCard />
+      </div>
     </div>
   );
 }
