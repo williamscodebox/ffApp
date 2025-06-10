@@ -17,6 +17,7 @@ import Register from "./pages/Auth/Register.jsx";
 import PrivateRoute from "./pages/Auth/PrivateRoute.jsx";
 import Overview from "./pages/Auth/Overview.jsx";
 import Menu from "./pages/Auth/Menu.jsx";
+import Week from "./pages/Auth/Week.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/overview" element={<Overview />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/week" element={<Week />} />
       </Route>
     </Route>
   )

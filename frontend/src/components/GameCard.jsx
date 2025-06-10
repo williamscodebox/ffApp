@@ -3,7 +3,7 @@ import React from "react";
 const GameCard = ({ teamA, teamB, date }) => {
   return (
     <div className="flex flex-row gap-2 text-2xl items-center justify-between w-[80%] ml-20">
-      <div className="w-[30%]">
+      <div className="w-[35%]">
         <p>{date}</p>
       </div>
       <div className="flex flex-row items-center w-[40%]">

@@ -4,12 +4,12 @@ function Sidebar() {
       <h1 className="text-xl">Dashboard</h1>
       <ul className="mt-6 space-y-4">
         <li>
-          <a href="#home" className="hover:text-gray-200">
+          <a href="/menu" className="hover:text-gray-200">
             Home
           </a>
         </li>
         <li>
-          <a href="#settings" className="hover:text-gray-200">
+          <a href="/Week" className="hover:text-gray-200">
             Settings
           </a>
         </li>

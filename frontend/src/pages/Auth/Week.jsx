@@ -6,14 +6,11 @@ const Menu = () => {
   return (
     <div className="flex flex-row justify-between mt-10">
       {/* <div>Current Standings</div> */}
-      <div>
+      <div className="hidden lg:flex">
         <Sidebar />
       </div>
-      <div className="w-[90%]">
-        {/* <Overview /> */}
-        <div className="flex justify-center text-2xl text-white bg-gray-700 h-[200vh]">
-          Welcome
-        </div>
+      <div className="w-[100%] lg:w-[90%]">
+        <Overview />
       </div>
     </div>
   );
