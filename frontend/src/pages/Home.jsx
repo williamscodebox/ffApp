@@ -2,8 +2,13 @@ import { motion } from "motion/react";
 import InformationCard from "../components/InformationCard";
 import WelcomeCard from "../components/WelcomeCard";
 import ScrollCard from "../components/ScrollCard";
+import { useEffect } from "react";
 
 function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="mt-10 home-bg">
       <div>

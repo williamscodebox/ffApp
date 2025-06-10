@@ -22,6 +22,10 @@ const Navigation = () => {
     setDropdownOpen(false);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [dropdown]);
+
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
