@@ -1,12 +1,16 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
+import Overview from "./Overview";
 
 const Menu = () => {
   return (
-    <div className="mt-20">
-      <div>Current Standings</div>
+    <div className="flex flex-row justify-between mt-10">
+      {/* <div>Current Standings</div> */}
       <div>
         <Sidebar />
+      </div>
+      <div className="w-[90%]">
+        <Overview />
       </div>
     </div>
   );
