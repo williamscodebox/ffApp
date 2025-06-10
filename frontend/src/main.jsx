@@ -16,6 +16,7 @@ import Register from "./pages/Auth/Register.jsx";
 //Restricted
 import PrivateRoute from "./pages/Auth/PrivateRoute.jsx";
 import Overview from "./pages/Auth/Overview.jsx";
+import Menu from "./pages/Auth/Menu.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
 
       <Route path="" element={<PrivateRoute />}>
         <Route path="/overview" element={<Overview />} />
+        <Route path="/menu" element={<Menu />} />
       </Route>
     </Route>
   )
