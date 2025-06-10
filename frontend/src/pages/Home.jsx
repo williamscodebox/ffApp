@@ -27,7 +27,7 @@ function Home() {
       >
         <WelcomeCard />
       </motion.div> */}
-      <div>
+      <div className="border-1 mt-30 mr-35 ml-32 rounded-2xl bg-[#1e2939] opacity-90 border-white">
         <ScrollCard />
       </div>
     </div>

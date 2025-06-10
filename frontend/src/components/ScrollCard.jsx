@@ -1,12 +1,15 @@
 import * as motion from "motion/react-client";
+import WelcomeCard from "./WelcomeCard";
 
 const ScrollCard = () => {
   return (
-    <div
-      style={container}
-      className="h-[100vh] opacity-90 rounded-2xl border-white border-1"
-    >
-      <Card />
+    <div className="flex flex-row justify-between">
+      <div style={container} className="h-[80vh] opacity-90">
+        <Card />
+      </div>
+      <div>
+        <WelcomeCard />
+      </div>
     </div>
   );
 };
@@ -58,10 +61,13 @@ const football = {
 };
 
 const container = {
-  margin: "100px auto",
-  maxWidth: 1000,
-  paddingBottom: 80,
-  width: "100%",
+  marginLeft: "5px",
+  marginTop: "20px",
+  marginBottom: "20px",
+  minWidth: 500,
+  maxWidth: 500,
+  paddingBottom: 40,
+  // width: "100%",
   background: "#1e2939",
 };
 
