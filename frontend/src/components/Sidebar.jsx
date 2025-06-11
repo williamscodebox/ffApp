@@ -1,10 +1,11 @@
-import { useDates } from "../zus/store";
+import { Link } from "react-router-dom";
+import { useValues } from "../providers/ValueContext";
 
 function Sidebar() {
-  const { setValues } = useDates();
+  const { updateValues } = useValues();
 
   const handleTwo = () => {
-    setValues([
+    updateValues([
       "Sept 11",
       "Sept 12",
       "Sept 13",
@@ -20,9 +21,17 @@ function Sidebar() {
       <h1 className="text-xl">Dashboard</h1>
       <ul className="mt-6 space-y-4">
         <li>
-          <a href="/menu" className="hover:text-gray-200">
+          {" "}
+          <Link
+            to="/Week"
+            className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
+            onClick={handleTwo}
+          >
+            <span className="hidden sm:block">Home</span>
+          </Link>
+          {/* <a href="/menu" className="hover:text-gray-200">
             Home
-          </a>
+          </a> */}
         </li>
         <li>
           <a href="/Week" className="hover:text-gray-200">

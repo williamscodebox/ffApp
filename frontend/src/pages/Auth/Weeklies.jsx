@@ -1,16 +1,19 @@
 import { useEffect } from "react";
 import { schedule } from "../../../data/data.js";
 import GameCard from "../../components/GameCard.jsx";
-import { useDates } from "../../zus/store.js";
+import { useValues } from "../../providers/ValueContext.jsx";
 
 const Weeklies = () => {
   // const { value } = useDates((state) => ({ value: state.value }));
   // const value = useDates((state) => state.value);
-  const value = useDates((state) => state.value);
+  const { values } = useValues();
+  const value = values;
 
-  useEffect(() => {}, [value]);
+  useEffect(() => {
+    console.log("Current context value:", values);
+  }, [value]); // Will log whenever `value` changes
 
-  console.log(value);
+  //console.log(value);
 
   // const dispatch = useDispatch();
   // dispatch(setValues());
@@ -22,13 +25,12 @@ const Weeklies = () => {
       <div className="flex flex-col gap-6">
         {schedule.map((item) => {
           // console.log(JSON.stringify(item.date));
-          console.log(JSON.stringify(item.date) === JSON.stringify(value));
+          // console.log(JSON.stringify(item.date) === JSON.stringify(value));
           if (
             value.some(
               (choice) => JSON.stringify(choice) === JSON.stringify(item.date)
             )
           ) {
-            console.log("fuck you");
             return (
               <GameCard
                 key={item.date + item.TeamsPlaying[0] + item.TeamsPlaying[1]}

@@ -2,22 +2,31 @@ import { createContext, useState, useContext } from "react";
 
 const ValueContext = createContext();
 export const ValueProvider = ({ children }) => {
-  const [values, setvalues] = useState([]);
+  const [values, setValues] = useState([
+    "Sept 4",
+    "Sept 5",
+    "Sept 6",
+    "Sept 7",
+    "Sept 8",
+    "Sept 9",
+    "Sept 10",
+  ]);
 
   //   const addBlog = (value) => {
   //     setBlogs([...blogs, blog]);
   //   };
 
-  //   const updateBlog = (updatedBlog) => {
-  //     setBlogs(
-  //       blogs.map((blog) => (blog.id === updatedBlog.id ? updatedBlog : blog))
-  //     );
-  //   };
+  const updateValues = (updatedValues) => {
+    setValues([...updatedValues]); // Always create a new array
+    console.log(values);
+  };
 
   //   const deleteBlog = (id) => setBlogs(blogs.filter((blog) => blog.id !== id));
 
   return (
-    <ValueContext.Provider value={{ values }}>{children}</ValueContext.Provider>
+    <ValueContext.Provider value={{ values, updateValues }}>
+      {children}
+    </ValueContext.Provider>
   );
 };
 
