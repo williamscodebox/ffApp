@@ -1,16 +1,14 @@
 import { teams, day, week, schedule } from "../../../data/data.js";
 import GameCard from "../../components/GameCard.jsx";
+import { useDispatch, useSelector } from "react-redux";
 
 const Weeklies = () => {
-  const value = [
-    "Sept 4",
-    "Sept 5",
-    "Sept 6",
-    "Sept 7",
-    "Sept 8",
-    "Sept 9",
-    "Sept 10",
-  ];
+  const { value } = useSelector((state) => state.team);
+  // const dispatch = useDispatch();
+  // dispatch(setValues());
+  // use this code above to set the dates in the global value state to render the week.
+  // get the values from props in the selection or from an onClick in the links set
+
   return (
     <div className="flex flex-col mt-8">
       <div className="flex flex-col gap-6">

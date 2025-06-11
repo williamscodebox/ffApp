@@ -1,6 +1,6 @@
 function Sidebar() {
   return (
-    <div className="bg-teal-500 text-white w-[10rem] h-full p-4">
+    <div className="bg-gray-900 text-white w-[10rem] h-full p-4 pt-10 fixed">
       <h1 className="text-xl">Dashboard</h1>
       <ul className="mt-6 space-y-4">
         <li>

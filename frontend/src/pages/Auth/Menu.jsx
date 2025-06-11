@@ -15,7 +15,7 @@ const Menu = () => {
       </div>
       <div className="w-[90%]">
         {/* <Overview /> */}
-        <div className="flex justify-center text-2xl text-white bg-gray-700 h-[200vh]">
+        <div className="flex justify-center text-2xl text-white bg-gray-700 h-[200vh] pt-10">
           Welcome
         </div>
       </div>

@@ -35,13 +35,26 @@ const initialState = {
     "49ers",
     "Seahawks",
   ],
+  value: [
+    "Sept 4",
+    "Sept 5",
+    "Sept 6",
+    "Sept 7",
+    "Sept 8",
+    "Sept 9",
+    "Sept 10",
+  ],
 };
 
 const teamSlice = createSlice({
   name: "team",
   initialState,
-  reducers: {},
+  reducers: {
+    setValues: (state, action) => {
+      state.value = action.payload;
+    },
+  },
 });
 
-// export const { pickTeam } = teamSlice.actions;
+export const { setValues } = teamSlice.actions;
 export default teamSlice.reducer;
