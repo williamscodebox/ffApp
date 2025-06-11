@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { teams, day, week, schedule } from "../../../data/data.js";
 import GameCard from "../../components/GameCard.jsx";
 import { useDispatch, useSelector } from "react-redux";
 
 const Weeklies = () => {
   const { value } = useSelector((state) => state.team);
+  console.log(value);
+
   // const dispatch = useDispatch();
   // dispatch(setValues());
   // use this code above to set the dates in the global value state to render the week.

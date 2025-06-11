@@ -51,7 +51,7 @@ const teamSlice = createSlice({
   initialState,
   reducers: {
     setValues: (state, action) => {
-      state.value = action.payload;
+      return { ...state, value: action.payload };
     },
   },
 });
