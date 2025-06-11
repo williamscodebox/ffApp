@@ -11,5 +11,5 @@ export const useDates = create((set) => ({
     "Sept 10",
   ],
 
-  setValues: (newValues) => set((state) => ({ value: newValues })),
+  setValues: (newValues) => set({ value: newValues }),
 }));

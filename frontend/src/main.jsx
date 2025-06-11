@@ -10,6 +10,7 @@ import ErrorPage from "./pages/ErrorPage.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import Register from "./pages/Auth/Register.jsx";
+import { ValueProvider } from "./providers/ValueContext.jsx";
 
 // Auth
 
@@ -36,7 +37,9 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
+  <ValueProvider>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </ValueProvider>
 );

@@ -1,21 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setValues } from "../redux/features/teamSlice";
+import { useDates } from "../zus/store";
 
 function Sidebar() {
-  const dispatch = useDispatch();
+  const { setValues } = useDates();
 
   const handleTwo = () => {
-    dispatch(
-      setValues([
-        "Sept 11",
-        "Sept 12",
-        "Sept 13",
-        "Sept 14",
-        "Sept 15",
-        "Sept 16",
-        "Sept 17",
-      ])
-    );
+    setValues([
+      "Sept 11",
+      "Sept 12",
+      "Sept 13",
+      "Sept 14",
+      "Sept 15",
+      "Sept 16",
+      "Sept 17",
+    ]);
   };
 
   return (

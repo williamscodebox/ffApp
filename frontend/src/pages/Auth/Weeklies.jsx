@@ -1,10 +1,15 @@
 import { useEffect } from "react";
-import { teams, day, week, schedule } from "../../../data/data.js";
+import { schedule } from "../../../data/data.js";
 import GameCard from "../../components/GameCard.jsx";
-import { useDispatch, useSelector } from "react-redux";
+import { useDates } from "../../zus/store.js";
 
 const Weeklies = () => {
-  const { value } = useSelector((state) => state.team);
+  // const { value } = useDates((state) => ({ value: state.value }));
+  // const value = useDates((state) => state.value);
+  const value = useDates((state) => state.value);
+
+  useEffect(() => {}, [value]);
+
   console.log(value);
 
   // const dispatch = useDispatch();
