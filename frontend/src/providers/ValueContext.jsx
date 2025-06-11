@@ -1,25 +1,23 @@
 import { createContext, useState, useContext } from "react";
 
-const ValueContext = createContext;
+const ValueContext = createContext();
 export const ValueProvider = ({ children }) => {
-  const [values, setvalues] = useState;
+  const [values, setvalues] = useState([]);
 
-  const addBlog = (value) => {
-    setBlogs([...blogs, blog]);
-  };
+  //   const addBlog = (value) => {
+  //     setBlogs([...blogs, blog]);
+  //   };
 
-  const updateBlog = (updatedBlog) => {
-    setBlogs(
-      blogs.map((blog) => (blog.id === updatedBlog.id ? updatedBlog : blog))
-    );
-  };
+  //   const updateBlog = (updatedBlog) => {
+  //     setBlogs(
+  //       blogs.map((blog) => (blog.id === updatedBlog.id ? updatedBlog : blog))
+  //     );
+  //   };
 
-  const deleteBlog = (id) => setBlogs(blogs.filter((blog) => blog.id !== id));
+  //   const deleteBlog = (id) => setBlogs(blogs.filter((blog) => blog.id !== id));
 
   return (
-    <ValueContext.Provider value={{ values, addBlog, updateBlog, deleteBlog }}>
-      {children}
-    </ValueContext.Provider>
+    <ValueContext.Provider value={{ values }}>{children}</ValueContext.Provider>
   );
 };
 
