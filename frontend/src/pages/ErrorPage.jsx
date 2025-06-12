@@ -14,14 +14,14 @@ const ErrorPage = () => {
   //   }
   // });
 
-  const week1 = makeWeek(0, 0);
-  console.log(week1);
-  const week2 = makeWeek(1, 0);
-  console.log(week2);
-  const week4 = makeWeek(3, 0);
-  console.log(week4);
-  const week13 = makeWeek(12, 2);
-  console.log(week13);
+  // const week1 = makeWeek(0, 0);
+  // console.log(week1);
+  // const week2 = makeWeek(1, 0);
+  // console.log(week2);
+  // const week4 = makeWeek(3, 0);
+  // console.log(week4);
+  // const week13 = makeWeek(12, 2);
+  // console.log(week13);
 
   return (
     <div>

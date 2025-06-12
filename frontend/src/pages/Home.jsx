@@ -5,9 +5,9 @@ import ScrollCard from "../components/ScrollCard";
 import { useEffect } from "react";
 
 function Home() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <div className="mt-10 home-bg">

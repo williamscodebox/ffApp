@@ -1,19 +1,15 @@
 import { Link } from "react-router-dom";
 import { useValues } from "../providers/ValueContext";
+import { makeWeek } from "../../data/data";
 
 function Sidebar() {
   const { updateValues } = useValues();
 
-  const handleTwo = () => {
-    updateValues([
-      "Sept 11",
-      "Sept 12",
-      "Sept 13",
-      "Sept 14",
-      "Sept 15",
-      "Sept 16",
-      "Sept 17",
-    ]);
+  const handleClick = (w, m) => {
+    // w is for week and m is for month
+    const update = makeWeek(w, m);
+    console.log(update);
+    updateValues(update);
   };
 
   return (
@@ -21,27 +17,31 @@ function Sidebar() {
       <h1 className="text-xl">Dashboard</h1>
       <ul className="mt-6 space-y-4">
         <li>
-          {" "}
           <Link
-            to="/Week"
+            to="/Menu"
             className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
-            onClick={handleTwo}
+            // onClick={handleTwo}
           >
             <span className="hidden sm:block">Home</span>
           </Link>
-          {/* <a href="/menu" className="hover:text-gray-200">
-            Home
-          </a> */}
         </li>
         <li>
-          <a href="/Week" className="hover:text-gray-200">
-            Settings
-          </a>
+          <Link
+            to="/Week"
+            className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
+            onClick={() => handleClick(0, 0)}
+          >
+            <span className="hidden sm:block">Week 1</span>
+          </Link>
         </li>
         <li>
-          <a href="" className="hover:text-gray-200" onClick={handleTwo}>
-            Week 2
-          </a>
+          <Link
+            to="/Week"
+            className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
+            onClick={() => handleClick(1, 0)}
+          >
+            <span className="hidden sm:block">Week 2</span>
+          </Link>
         </li>
       </ul>
     </div>

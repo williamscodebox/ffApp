@@ -9,9 +9,9 @@ const Weeklies = () => {
   const { values } = useValues();
   const value = values;
 
-  useEffect(() => {
-    console.log("Current context value:", values);
-  }, [value]); // Will log whenever `value` changes
+  // useEffect(() => {
+  //   console.log("Current context value:", values);
+  // }, [value]); // Will log whenever `value` changes
 
   //console.log(value);
 
