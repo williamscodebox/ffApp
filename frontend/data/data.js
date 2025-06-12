@@ -43,6 +43,8 @@ export const day = [
   "Wednesday", // 6
 ];
 
+export const month = ["Sept", "Oct", "Nov", "Dec", "Jan"];
+
 export const week = [
   ["Sept", 4, 5, 6, 7, 8, 9, 10], // 0
   ["Sept", 11, 12, 13, 14, 15, 16, 17], // 1
@@ -266,3 +268,21 @@ export const schedule = [
     time: "1:00pm",
   },
 ];
+
+export const makeWeek = (w, m) => {
+  // w is for week and m is for month
+  const newWeek = week[w].map((item) => {
+    if (typeof item === "object") {
+      // console.log("fuck YA");
+      // console.log(item);
+      const change = item[1];
+      const objectCheck = month[m + 1] + " " + change;
+      return objectCheck;
+      // console.log(item);
+    }
+    const check1 = month[m] + " " + item;
+    return check1;
+  });
+  newWeek.shift();
+  return newWeek;
+};
