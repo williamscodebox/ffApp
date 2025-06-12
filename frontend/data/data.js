@@ -364,6 +364,104 @@ export const schedule = [
     TeamsPlaying: [teams[21], teams[4]],
     time: "8:15pm",
   },
+  //   <--- week four --->
+  // ---------------------------------
+  {
+    date: week[3][0] + " " + week[3][1],
+    dayOf: day[0],
+    TeamsPlaying: [teams[31], teams[28]],
+    time: "8:15pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[23], teams[7]],
+    time: "9:30am",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[19], teams[24]],
+    time: "1:00pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[26], teams[0]],
+    time: "1:00pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[6], teams[21]],
+    time: "1:00pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[11], teams[8]],
+    time: "1:00pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[25], teams[2]],
+    time: "1:00pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[15], teams[17]],
+    time: "1:00pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[18], teams[27]],
+    time: "1:00pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[9], teams[29]],
+    time: "4:05pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[10], teams[30]],
+    time: "4:05pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[4], teams[13]],
+    time: "4:25pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[20], teams[14]],
+    time: "4:25pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[22], teams[16]],
+    time: "8:20pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][5],
+    dayOf: day[4],
+    TeamsPlaying: [teams[3], teams[1]],
+    time: "7:15pm",
+  },
+  {
+    date: week[3][0] + " " + week[3][5],
+    dayOf: day[4],
+    TeamsPlaying: [teams[5], teams[12]],
+    time: "8:15pm",
+  },
 ];
 
 export const makeWeek = (w, m) => {
