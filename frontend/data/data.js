@@ -461,6 +461,91 @@ export const schedule = [
     dayOf: day[4],
     TeamsPlaying: [teams[5], teams[12]],
     time: "8:15pm",
+  }, //   <--- week five --->
+  // ---------------------------------
+  {
+    date: week[4][0] + " " + week[4][1],
+    dayOf: day[0],
+    TeamsPlaying: [teams[30], teams[29]],
+    time: "8:15pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[23], teams[6]],
+    time: "9:30am",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[8], teams[4]],
+    time: "1:00pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[1], teams[25]],
+    time: "1:00pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[14], teams[9]],
+    time: "1:00pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[17], teams[26]],
+    time: "1:00pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[16], teams[3]],
+    time: "1:00pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[12], teams[18]],
+    time: "1:00pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[11], teams[28]],
+    time: "4:05pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[27], teams[31]],
+    time: "4:05pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[21], teams[5]],
+    time: "4:25pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[19], teams[15]],
+    time: "4:25pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[2], teams[0]],
+    time: "8:20pm",
+  },
+  {
+    date: week[4][0] + " " + week[4][5],
+    dayOf: day[4],
+    TeamsPlaying: [teams[13], teams[10]],
+    time: "8:15pm",
   },
 ];
 
