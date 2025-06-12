@@ -807,6 +807,85 @@ export const schedule = [
     dayOf: day[4],
     TeamsPlaying: [teams[19], teams[13]],
     time: "8:15pm",
+  }, //   <--- week nine --->
+  // ---------------------------------
+  {
+    date: week[8][0] + " " + week[8][1],
+    dayOf: day[0],
+    TeamsPlaying: [teams[4], teams[1]],
+    time: "8:15pm",
+  },
+  {
+    date: week[8][4][0] + " " + week[8][4][1], // work from here
+    dayOf: day[3],
+    TeamsPlaying: [teams[1], teams[24]],
+    time: "1:00pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[20], teams[4]],
+    time: "1:00pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[0], teams[25]],
+    time: "1:00pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[3], teams[5]],
+    time: "1:00pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[30], teams[8]],
+    time: "1:00pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[6], teams[2]],
+    time: "1:00pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[17], teams[18]],
+    time: "1:00pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[27], teams[26]],
+    time: "4:05pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[16], teams[12]],
+    time: "4:25pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[11], teams[9]],
+    time: "4:25pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[22], teams[7]],
+    time: "8:20pm",
+  },
+  {
+    date: week[8][0] + " " + week[8][5],
+    dayOf: day[4],
+    TeamsPlaying: [teams[19], teams[13]],
+    time: "8:15pm",
   },
 ];
 
@@ -825,5 +904,6 @@ export const makeWeek = (w, m) => {
     return check1;
   });
   newWeek.shift();
+  console.log(newWeek);
   return newWeek;
 };
