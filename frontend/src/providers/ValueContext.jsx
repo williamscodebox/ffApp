@@ -18,7 +18,7 @@ export const ValueProvider = ({ children }) => {
 
   const updateValues = (updatedValues) => {
     setValues([...updatedValues]); // Always create a new array
-    console.log(values);
+    //console.log(values);
   };
 
   //   const deleteBlog = (id) => setBlogs(blogs.filter((blog) => blog.id !== id));

@@ -42,6 +42,15 @@ function Sidebar() {
           >
             <span className="hidden sm:block">Week 2</span>
           </Link>
+        </li>{" "}
+        <li>
+          <Link
+            to="/Week"
+            className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
+            onClick={() => handleClick(2, 0)}
+          >
+            <span className="hidden sm:block">Week 3</span>
+          </Link>
         </li>
       </ul>
     </div>
