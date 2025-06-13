@@ -26,6 +26,11 @@ function Sidebar() {
     [10, 2],
     [11, 2],
     [12, 2],
+    [13, 3],
+    [14, 3],
+    [15, 3],
+    [16, 3],
+    // [17, 4] //schedule yet to be determined // check nfl schedule for updates
   ];
 
   return (
