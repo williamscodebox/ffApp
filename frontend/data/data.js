@@ -1335,6 +1335,103 @@ export const schedule = [
     dayOf: day[4],
     TeamsPlaying: [teams[18], teams[15]],
     time: "8:15pm",
+  }, //   <--- week fifteen --->
+  // ---------------------------------
+  {
+    date: week[14][0] + " " + week[14][1],
+    dayOf: day[0],
+    TeamsPlaying: [teams[24], teams[27]],
+    time: "8:15pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[6], teams[20]],
+    time: "1:00pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[4], teams[5]],
+    time: "1:00pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[28], teams[8]],
+    time: "1:00pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[3], teams[10]],
+    time: "1:00pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[15], teams[13]],
+    time: "1:00pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[0], teams[2]],
+    time: "1:00pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[19], teams[17]],
+    time: "1:00pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[14], teams[18]],
+    time: "1:00pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[22], teams[12]],
+    time: "4:25pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[21], teams[29]],
+    time: "4:25pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[25], teams[26]],
+    time: "4:25pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[9], teams[31]],
+    time: "4:25pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[11], teams[30]],
+    time: "4:25pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[23], teams[16]],
+    time: "8:20pm",
+  },
+  {
+    date: week[14][0] + " " + week[14][5],
+    dayOf: day[4],
+    TeamsPlaying: [teams[1], teams[7]],
+    time: "8:15pm",
   },
 ];
 
