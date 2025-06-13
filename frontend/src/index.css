@@ -22,3 +22,43 @@
   /* height: 200vh; */
   width: 100%;
 }
+.sidebar {
+  direction: rtl; /* Switch text direction to right-to-left */
+  overflow: auto; /* Enable scrolling */
+}
+
+.sidebar * {
+  direction: ltr; /* Preserve normal text direction */
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #1a202c; /* Track color */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #4a5568; /* Scrollbar handle color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #2d3748; /* Darker color on hover */
+}
+
+.scroll-btn {
+  position: fixed;
+  /* left: 50%; */
+  transform: translateX(-50%);
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.scroll-btn:hover {
+  background-color: #2d3748;
+}
