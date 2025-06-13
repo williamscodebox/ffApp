@@ -1584,7 +1584,7 @@ export const schedule = [
     dayOf: day[4],
     TeamsPlaying: [teams[29], teams[24]],
     time: "8:15pm",
-  },
+  }, // week eighteen games not scheduled yet // check nfl schedule for updates
 ];
 
 export const makeWeek = (w, m) => {
