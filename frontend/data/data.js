@@ -1517,6 +1517,73 @@ export const schedule = [
     dayOf: day[4],
     TeamsPlaying: [teams[30], teams[9]],
     time: "8:15pm",
+  }, //   <--- week seventeen ---> // has games yet to be determined // check nfl schedule for updates
+  // ---------------------------------
+  {
+    date: week[16][0] + " " + week[16][1],
+    dayOf: day[0],
+    TeamsPlaying: [teams[16], teams[19]],
+    time: "1:00pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][1],
+    dayOf: day[0],
+    TeamsPlaying: [teams[21], teams[23]],
+    time: "4:30pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][1],
+    dayOf: day[0],
+    TeamsPlaying: [teams[12], teams[13]],
+    time: "8:15pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[7], teams[6]],
+    time: "1:00pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[10], teams[9]],
+    time: "1:00pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[27], teams[1]],
+    time: "1:00pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[2], teams[3]],
+    time: "1:00pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[26], teams[11]],
+    time: "1:00pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[18], teams[0]],
+    time: "4:25pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][4],
+    dayOf: day[3],
+    TeamsPlaying: [teams[20], teams[30]],
+    time: "8:20pm",
+  },
+  {
+    date: week[16][0] + " " + week[16][5],
+    dayOf: day[4],
+    TeamsPlaying: [teams[29], teams[24]],
+    time: "8:15pm",
   },
 ];
 
