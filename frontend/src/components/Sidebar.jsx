@@ -63,9 +63,9 @@ function Sidebar() {
             </Link>
           </li>
 
-          {pattern.map((item) => {
+          {pattern.map((item, index) => {
             return (
-              <li>
+              <li key={index}>
                 <Link
                   to="/Week"
                   className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
