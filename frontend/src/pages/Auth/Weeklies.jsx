@@ -1,13 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { schedule } from "../../../data/data.js";
 import GameCard from "../../components/GameCard.jsx";
 import { useValues } from "../../providers/ValueContext.jsx";
 
 const Weeklies = () => {
-  // const { value } = useDates((state) => ({ value: state.value }));
-  // const value = useDates((state) => state.value);
+  const [selections, setSelections] = useState({});
+
   const { values } = useValues();
   const value = values;
+
+  const saveToDatabase = async () => {
+    // await fetch("http://localhost:5000/save-selections", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(selections),
+    // });
+    console.log("Selections saved:", selections);
+  };
 
   // useEffect(() => {
   //   console.log("Current context value:", values);
@@ -37,10 +46,17 @@ const Weeklies = () => {
                 teamA={item.TeamsPlaying[0]}
                 teamB={item.TeamsPlaying[1]}
                 date={item.time + " " + item.dayOf + " " + item.date}
+                setSelections={setSelections}
               />
             );
           }
         })}
+        <button
+          onClick={saveToDatabase}
+          className="mt-4 p-3 bg-blue-500 text-white rounded"
+        >
+          Save Selections
+        </button>
       </div>
     </div>
   );
