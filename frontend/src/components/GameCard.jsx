@@ -4,8 +4,9 @@ const GameCard = ({ teamA, teamB, date, setSelections }) => {
   const [selectedTeam, setSelectedTeam] = useState(null);
 
   const handleSelection = (team) => {
+    const gameKey = `${date}-${teamA}-${teamB}`;
     setSelectedTeam(team);
-    setSelections((prev) => ({ ...prev, [date]: team }));
+    setSelections((prev) => ({ ...prev, [gameKey]: team }));
   };
 
   return (
