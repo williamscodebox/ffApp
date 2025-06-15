@@ -1,14 +1,14 @@
 import express from "express";
 
 // controllers
-import {} from "../controllers/selectionsController.js";
+import { createSelections } from "../controllers/selectionsController.js";
 
 // middlewares
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.route("/selections").post(authenticate, createSelections);
+router.route("/").post(authenticate, createSelections);
 // // .get(authenticate, authorizeAdmin, getAllUsers);
 
 // router.post("/auth", loginUser);

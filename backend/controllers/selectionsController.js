@@ -1,39 +1,31 @@
 import asyncHandler from "../middlewares/asyncHandler.js";
+import Selection from "../models/Selections.js";
 
-const createSelection = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+const createSelections = asyncHandler(async (req, res) => {
+  const { selections } = req.body;
 
-  if (!username || !email || !password) {
-    throw new Error("Please fill all the fields");
-  }
-
-  const userExists = await User.findOne({ email });
-  if (userExists) {
+  const existingSelections = await Selection.findOne({ userId: req.userId });
+  if (existingSelections) {
     res.status(400);
-    throw new Error("User already exists");
+    throw new Error("Selections already exists");
   }
 
-  // Hash the user passwword
-
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-
-  const newUser = new User({ username, email, password: hashedPassword });
+  const newSelections = new Selection({
+    // userId: req.userId,
+    selections,
+  });
 
   try {
-    await newUser.save();
-    createToken(res, newUser._id);
+    await newSelections.save();
 
     res.status(201).json({
-      _id: newUser._id,
-      username: newUser.username,
-      email: newUser.email,
-      isAdmin: newUser.isAdmin,
+      // _id: newSelections.userId,
+      selections: newSelections.selections,
     });
   } catch (error) {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new Error("Invalid selections data");
   }
 });
 
-export { createSelection };
+export { createSelections };
