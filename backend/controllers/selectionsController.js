@@ -3,6 +3,7 @@ import Selection from "../models/Selections.js";
 
 const createSelections = asyncHandler(async (req, res) => {
   const { selections } = req.body;
+  const { userId } = req.body;
 
   const existingSelections = await Selection.findOne({ userId: req.userId });
   if (existingSelections) {
@@ -11,7 +12,7 @@ const createSelections = asyncHandler(async (req, res) => {
   }
 
   const newSelections = new Selection({
-    // userId: req.userId,
+    userId,
     selections,
   });
 
@@ -19,7 +20,7 @@ const createSelections = asyncHandler(async (req, res) => {
     await newSelections.save();
 
     res.status(201).json({
-      // _id: newSelections.userId,
+      _id: newSelections.userId,
       selections: newSelections.selections,
     });
   } catch (error) {
