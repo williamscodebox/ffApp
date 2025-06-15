@@ -8,7 +8,7 @@ import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.route("/selections").post(createSelections);
+router.route("/selections").post(authenticate, createSelections);
 // // .get(authenticate, authorizeAdmin, getAllUsers);
 
 // router.post("/auth", loginUser);
