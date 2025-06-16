@@ -7,10 +7,13 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${SELECTIONS_URL}`,
         method: "POST",
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem("token")}`, // Send user token
+        // },
         body: data,
       }),
     }),
   }),
 });
 
-export const { useCreateSelectionMutation } = selectionsApiSlice;
+export const { useCreateSelectionsMutation } = selectionsApiSlice;

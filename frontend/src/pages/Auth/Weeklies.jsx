@@ -2,20 +2,34 @@ import { useEffect, useState } from "react";
 import { schedule } from "../../../data/data.js";
 import GameCard from "../../components/GameCard.jsx";
 import { useValues } from "../../providers/ValueContext.jsx";
+import { useSelector } from "react-redux";
+import { useCreateSelectionsMutation } from "../../redux/api/selections.js";
 
 const Weeklies = () => {
   const [selections, setSelections] = useState({});
+  const [createSelections] = useCreateSelectionsMutation();
+  const { userInfo } = useSelector((state) => state.auth);
 
   const { values } = useValues();
   const value = values;
 
   const saveToDatabase = async () => {
-    // await fetch("http://localhost:5000/save-selections", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(selections),
-    // });
     console.log("Selections saved:", selections);
+    console.log(userInfo._id);
+    const userId = userInfo._id;
+    const selectionsArray = Object.entries(selections).map(
+      ([gameKey, team]) => ({
+        gameKey,
+        team,
+      })
+    );
+    console.log("Selections Array:", selectionsArray);
+    try {
+      await createSelections({ selectionsArray, userId }).unwrap();
+      console.log("Selections saved successfully!");
+    } catch (error) {
+      console.error("Error saving selections:", error);
+    }
   };
 
   // useEffect(() => {
