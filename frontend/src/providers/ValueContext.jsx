@@ -1,6 +1,7 @@
 import { createContext, useState, useContext } from "react";
 
 const ValueContext = createContext();
+
 export const ValueProvider = ({ children }) => {
   const [values, setValues] = useState([
     "Sept 4",
@@ -11,21 +12,17 @@ export const ValueProvider = ({ children }) => {
     "Sept 9",
     "Sept 10",
   ]);
+
   const [weekValue, setWeekValue] = useState(0);
-  //   const addBlog = (value) => {
-  //     setBlogs([...blogs, blog]);
-  //   };
 
   const updateValues = (updatedValues) => {
     setValues([...updatedValues]); // Always create a new array
     //console.log(values);
   };
-  const updateWeek = (updatedValue) => {
-    setWeekValue(updatedValue); // Always create a new array
-    //console.log(values);
-  };
 
-  //   const deleteBlog = (id) => setBlogs(blogs.filter((blog) => blog.id !== id));
+  const updateWeek = (updatedValue) => {
+    setWeekValue(updatedValue);
+  };
 
   return (
     <ValueContext.Provider
