@@ -3,8 +3,10 @@ import { schedule } from "../../../data/data.js";
 import GameCard from "../../components/GameCard.jsx";
 import { useValues } from "../../providers/ValueContext.jsx";
 import { useSelector } from "react-redux";
-import { useCreateSelectionsMutation } from "../../redux/api/selections.js";
-import { set } from "mongoose";
+import {
+  useCreateSelectionsMutation,
+  useFetchSelectionsQuery,
+} from "../../redux/api/selections.js";
 
 const Weeklies = () => {
   const [selections, setSelections] = useState({});
@@ -13,6 +15,15 @@ const Weeklies = () => {
 
   const { values, weekValue } = useValues();
   const value = values;
+
+  const {
+    data: fetchedSelections,
+    isLoading,
+    error,
+  } = useFetchSelectionsQuery({
+    userId: userInfo?._id,
+    week: weekValue,
+  });
 
   const saveToDatabase = async () => {
     if (!userInfo?._id) {
@@ -47,6 +58,22 @@ const Weeklies = () => {
     console.log("Current context value:", values);
   }, [value]); // Will log whenever `value` changes
 
+  useEffect(() => {
+    if (fetchedSelections) {
+      const formattedSelections = fetchedSelections.selections.reduce(
+        (acc, selection) => {
+          acc[selection.gameKey] = selection.team;
+          return acc;
+        },
+        {}
+      );
+      setSelections(formattedSelections);
+    }
+  }, [fetchedSelections]);
+
+  if (isLoading) return <p>Loading selections...</p>;
+  if (error) return <p>Error fetching selections!</p>;
+
   //console.log(value);
 
   // const dispatch = useDispatch();
@@ -73,6 +100,7 @@ const Weeklies = () => {
                 teamB={item.TeamsPlaying[1]}
                 date={item.time + " " + item.dayOf + " " + item.date}
                 setSelections={setSelections}
+                selections={selections}
               />
             );
           }
