@@ -44,4 +44,18 @@ const fetchSelections = asyncHandler(async (req, res) => {
   res.json(selections);
 });
 
-export { createSelections, fetchSelections };
+const deleteSelections = asyncHandler(async (req, res) => {
+  const { userId, week } = req.params;
+
+  const deletedSelections = await Selection.findOneAndDelete({ userId, week });
+
+  if (!deletedSelections) {
+    return res
+      .status(404)
+      .json({ message: `No selections found for Week ${week}` });
+  }
+
+  res.json({ message: `Selections for Week ${week} deleted successfully` });
+});
+
+export { createSelections, fetchSelections, deleteSelections };

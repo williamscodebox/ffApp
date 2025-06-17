@@ -22,6 +22,15 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
         // },
       }),
     }),
+    deleteSelections: builder.mutation({
+      query: ({ userId, week }) => ({
+        url: `${SELECTIONS_URL}/${userId}/${week}`,
+        method: "DELETE",
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem("token")}`,
+        // },
+      }),
+    }),
   }),
 });
 
