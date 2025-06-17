@@ -4,6 +4,7 @@ import GameCard from "../../components/GameCard.jsx";
 import { useValues } from "../../providers/ValueContext.jsx";
 import { useSelector } from "react-redux";
 import { useCreateSelectionsMutation } from "../../redux/api/selections.js";
+import { set } from "mongoose";
 
 const Weeklies = () => {
   const [selections, setSelections] = useState({});
@@ -41,9 +42,10 @@ const Weeklies = () => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log("Current context value:", values);
-  // }, [value]); // Will log whenever `value` changes
+  useEffect(() => {
+    setSelections({});
+    console.log("Current context value:", values);
+  }, [value]); // Will log whenever `value` changes
 
   //console.log(value);
 

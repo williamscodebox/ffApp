@@ -30,4 +30,18 @@ const createSelections = asyncHandler(async (req, res) => {
   }
 });
 
-export { createSelections };
+const fetchSelections = asyncHandler(async (req, res) => {
+  const { userId, week } = req.params;
+
+  const selections = await Selection.findOne({ userId, week });
+
+  if (!selections) {
+    return res
+      .status(404)
+      .json({ message: `No selections found for Week ${week}` });
+  }
+
+  res.json(selections);
+});
+
+export { createSelections, fetchSelections };

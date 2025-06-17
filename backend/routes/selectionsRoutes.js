@@ -1,7 +1,10 @@
 import express from "express";
 
 // controllers
-import { createSelections } from "../controllers/selectionsController.js";
+import {
+  createSelections,
+  fetchSelections,
+} from "../controllers/selectionsController.js";
 
 // middlewares
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
@@ -9,7 +12,7 @@ import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.route("/").post(authenticate, createSelections);
-// // .get(authenticate, authorizeAdmin, getAllUsers);
+router.route("/:userId/:week").get(authenticate, fetchSelections);
 
 // router.post("/auth", loginUser);
 // router.post("/logout", logoutCurrentUser);

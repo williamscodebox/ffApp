@@ -13,6 +13,15 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    fetchSelections: builder.query({
+      query: ({ userId, week }) => ({
+        url: `${SELECTIONS_URL}/${userId}/${week}`, // Fetch selections by user & week
+        method: "GET",
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem("token")}`,
+        // },
+      }),
+    }),
   }),
 });
 
