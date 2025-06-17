@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import InformationCard from "../components/InformationCard";
-import WelcomeCard from "../components/WelcomeCard";
 import ScrollCard from "../components/ScrollCard";
 import { useEffect } from "react";
 
@@ -21,17 +20,6 @@ function Home() {
           <InformationCard />
         </motion.div>
       </div>
-      {/* <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          duration: 0.8,
-          delay: 0.5,
-          ease: [0, 0.71, 0.2, 1.01],
-        }}
-      >
-        <WelcomeCard />
-      </motion.div> */}
       <div className="border-1 mt-30 mr-35 ml-32 rounded-2xl bg-[#1e2939] opacity-90 border-white">
         <ScrollCard />
       </div>
