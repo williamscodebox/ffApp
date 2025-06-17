@@ -69,10 +69,10 @@ const Weeklies = () => {
       );
       setSelections(formattedSelections);
     }
-  }, [fetchedSelections]);
+  }, [fetchedSelections, value]);
 
   if (isLoading) return <p>Loading selections...</p>;
-  if (error) return <p>Error fetching selections!</p>;
+  //if (error) return <p>Error fetching selections!</p>;
 
   //console.log(value);
 
