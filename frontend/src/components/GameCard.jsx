@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const GameCard = ({ teamA, teamB, date, setSelections, selections }) => {
   const gameKey = `${date}-${teamA}-${teamB}`;
   const [selectedTeam, setSelectedTeam] = useState(selections?.[gameKey] || "");
-  console.log("GameCard rendered with selections:", selections[gameKey] || "");
-  console.log("GameCard date:", gameKey);
+  //console.log("GameCard rendered with selections:", selections[gameKey] || "");
+  //console.log("GameCard date:", gameKey);
 
   useEffect(() => {
     setSelectedTeam(selections?.[gameKey] || "");

@@ -5,13 +5,18 @@ import { useValues } from "../../providers/ValueContext.jsx";
 import { useSelector } from "react-redux";
 import {
   useCreateSelectionsMutation,
+  useDeleteSelectionsMutation,
   useFetchSelectionsQuery,
+  useUpdateSelectionsMutation,
 } from "../../redux/api/selections.js";
 
 const Weeklies = () => {
   const [selections, setSelections] = useState({});
   const [createSelections] = useCreateSelectionsMutation();
+  const [updateSelections] = useUpdateSelectionsMutation();
+  const [deleteSelections] = useDeleteSelectionsMutation();
   const { userInfo } = useSelector((state) => state.auth);
+  const [hasSelections, setHasSelections] = useState(false);
 
   const { values, weekValue } = useValues();
   const value = values;
@@ -30,8 +35,8 @@ const Weeklies = () => {
       console.error("User ID is missing, cannot save selections.");
       return;
     }
-    console.log("Selections saved:", selections);
-    console.log(userInfo._id);
+    //console.log("Selections saved:", selections);
+    //console.log(userInfo._id);
     const userId = userInfo._id;
     const week = weekValue;
     const selectionsArray = Object.entries(selections).map(
@@ -40,7 +45,7 @@ const Weeklies = () => {
         team,
       })
     );
-    console.log("Selections Array:", selectionsArray);
+    //console.log("Selections Array:", selectionsArray);
     try {
       await createSelections({
         selectionsArray,
@@ -55,7 +60,7 @@ const Weeklies = () => {
 
   useEffect(() => {
     setSelections({});
-    console.log("Current context value:", values);
+    //console.log("Current context value:", values);
   }, [value]); // Will log whenever `value` changes
 
   useEffect(() => {
@@ -68,11 +73,16 @@ const Weeklies = () => {
         {}
       );
       setSelections(formattedSelections);
+      // console.log("Fetched selections:", fetchedSelections);
+      setHasSelections(
+        fetchedSelections?.selections?.length > 0 &&
+          fetchedSelections?.week === weekValue
+      );
     }
   }, [fetchedSelections, value]);
 
   if (isLoading) return <p>Loading selections...</p>;
-  //if (error) return <p>Error fetching selections!</p>;
+  if (error) console.error("Error fetching selections:", error);
 
   //console.log(value);
 
@@ -100,12 +110,30 @@ const Weeklies = () => {
             );
           }
         })}
-        <button
-          onClick={saveToDatabase}
-          className="mt-4 p-3 bg-blue-500 text-white rounded"
-        >
-          Save Selections
-        </button>
+
+        {hasSelections ? (
+          <>
+            <button
+              onClick={""} // Placeholder for any future functionality
+              className="mt-4 p-3 bg-yellow-500 text-white rounded"
+            >
+              Update Selections
+            </button>
+            <button
+              onClick={""} // Placeholder for any future functionality
+              className="mt-4 p-3 bg-red-500 text-white rounded"
+            >
+              Delete Selections
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={saveToDatabase}
+            className="mt-4 p-3 bg-blue-500 text-white rounded"
+          >
+            Save Selections
+          </button>
+        )}
       </div>
     </div>
   );
