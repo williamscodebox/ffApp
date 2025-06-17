@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -10,18 +9,10 @@ const WelcomeCard = () => {
         <Link
           to="/menu"
           className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
-          // onClick={dropdown}
         >
           <AiOutlineHome className="mr-2" size={26} />
           <span className="hidden sm:block">Menu</span>
         </Link>
-        {/* <Link
-            to="/movies"
-            className="flex items-center transition-transform transform hover:translate-x-2 ml-[1rem]"
-          >
-            <MdOutlineLocalMovies className="mr-2 mt-[3rem]" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">SHOP</span>
-          </Link> */}
       </div>
     </div>
   );
