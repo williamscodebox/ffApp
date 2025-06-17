@@ -5,11 +5,6 @@ import { makeWeek } from "../../data/data";
 function Sidebar() {
   const { updateValues, updateWeek } = useValues();
 
-  const scrollSidebar = (amount) => {
-    const sidebar = document.querySelector(".overflow-auto");
-    sidebar.scrollBy({ top: amount, behavior: "smooth" });
-  };
-
   const handleClick = (w, m) => {
     // w is for week and m is for month
     const update = makeWeek(w, m);
@@ -41,16 +36,6 @@ function Sidebar() {
 
   return (
     <div className=" bg-gray-900 text-white w-[10rem] h-[87%] p-4 pt-10 pb-8 fixed">
-      {/*add fixed above to the div css and then add scroll bar to sidebar*/}
-
-      {/* Scroll Up Button */}
-      {/* <button
-        onClick={() => scrollSidebar(-100)}
-        className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600"
-      >
-        ▲
-      </button> */}
-
       <div className="h-full overflow-auto scrollbar-hide sidebar pl-5 pb-5">
         <h1 className="text-xl">Dashboard</h1>
         <ul className="mt-6 space-y-4">
@@ -58,7 +43,6 @@ function Sidebar() {
             <Link
               to="/Menu"
               className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
-              // onClick={handleTwo}
             >
               <span className="hidden sm:block">Home</span>
             </Link>
@@ -79,13 +63,6 @@ function Sidebar() {
           })}
         </ul>
       </div>
-      {/* Scroll Down Button */}
-      {/* <button
-        onClick={() => scrollSidebar(100)}
-        className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600"
-      >
-        ▼
-      </button> */}
     </div>
   );
 }
