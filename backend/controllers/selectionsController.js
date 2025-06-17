@@ -43,6 +43,26 @@ const fetchSelections = asyncHandler(async (req, res) => {
 
   res.json(selections);
 });
+const updateSelections = asyncHandler(async (req, res) => {
+  const { userId, week } = req.params;
+  const { selections } = req.body;
+
+  const existingSelections = await Selection.findOne({ userId, week });
+
+  if (!existingSelections) {
+    return res
+      .status(404)
+      .json({ message: `No selections found for Week ${week}` });
+  }
+
+  existingSelections.selections = selections; // Update selections
+  await existingSelections.save();
+
+  res.status(200).json({
+    message: `Selections for Week ${week} updated successfully`,
+    selections,
+  });
+});
 
 const deleteSelections = asyncHandler(async (req, res) => {
   const { userId, week } = req.params;
@@ -58,4 +78,9 @@ const deleteSelections = asyncHandler(async (req, res) => {
   res.json({ message: `Selections for Week ${week} deleted successfully` });
 });
 
-export { createSelections, fetchSelections, deleteSelections };
+export {
+  createSelections,
+  fetchSelections,
+  deleteSelections,
+  updateSelections,
+};

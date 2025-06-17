@@ -31,6 +31,16 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
         // },
       }),
     }),
+    updateSelections: builder.mutation({
+      query: ({ userId, week, selections }) => ({
+        url: `${SELECTIONS_URL}/${userId}/${week}`,
+        method: "PUT",
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem("token")}`,
+        // },
+        body: { selections },
+      }),
+    }),
   }),
 });
 
