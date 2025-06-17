@@ -2,17 +2,17 @@ import asyncHandler from "../middlewares/asyncHandler.js";
 import Selection from "../models/Selections.js";
 
 const createSelections = asyncHandler(async (req, res) => {
-  const { selectionsArray } = req.body;
-  const { userId } = req.body;
+  const { selectionsArray, userId, week } = req.body;
 
-  const existingSelections = await Selection.findOne({ userId });
+  const existingSelections = await Selection.findOne({ userId, week });
   if (existingSelections) {
     res.status(400);
-    throw new Error("Selections already exists");
+    throw new Error(`Selections for Week ${week + 1} already exists`);
   }
 
   const newSelections = new Selection({
     userId,
+    week,
     selections: selectionsArray,
   });
 
@@ -21,6 +21,7 @@ const createSelections = asyncHandler(async (req, res) => {
 
     res.status(201).json({
       _id: newSelections.userId,
+      week: newSelections.week,
       selections: newSelections.selectionsArray,
     });
   } catch (error) {

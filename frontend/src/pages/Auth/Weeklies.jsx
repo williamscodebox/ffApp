@@ -10,13 +10,18 @@ const Weeklies = () => {
   const [createSelections] = useCreateSelectionsMutation();
   const { userInfo } = useSelector((state) => state.auth);
 
-  const { values } = useValues();
+  const { values, weekValue } = useValues();
   const value = values;
 
   const saveToDatabase = async () => {
+    if (!userInfo?._id) {
+      console.error("User ID is missing, cannot save selections.");
+      return;
+    }
     console.log("Selections saved:", selections);
     console.log(userInfo._id);
     const userId = userInfo._id;
+    const week = weekValue;
     const selectionsArray = Object.entries(selections).map(
       ([gameKey, team]) => ({
         gameKey,
@@ -25,8 +30,12 @@ const Weeklies = () => {
     );
     console.log("Selections Array:", selectionsArray);
     try {
-      await createSelections({ selectionsArray, userId }).unwrap();
-      console.log("Selections saved successfully!");
+      await createSelections({
+        selectionsArray,
+        userId,
+        week,
+      }).unwrap();
+      console.log(`Selections saved successfully for Week ${weekValue + 1}!`);
     } catch (error) {
       console.error("Error saving selections:", error);
     }
@@ -49,6 +58,7 @@ const Weeklies = () => {
         {schedule.map((item) => {
           // console.log(JSON.stringify(item.date));
           // console.log(JSON.stringify(item.date) === JSON.stringify(value));
+          // if (value.some((choice) => choice === item.date)) {
           if (
             value.some(
               (choice) => JSON.stringify(choice) === JSON.stringify(item.date)

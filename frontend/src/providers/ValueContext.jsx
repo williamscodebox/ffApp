@@ -11,7 +11,7 @@ export const ValueProvider = ({ children }) => {
     "Sept 9",
     "Sept 10",
   ]);
-
+  const [weekValue, setWeekValue] = useState(0);
   //   const addBlog = (value) => {
   //     setBlogs([...blogs, blog]);
   //   };
@@ -20,11 +20,17 @@ export const ValueProvider = ({ children }) => {
     setValues([...updatedValues]); // Always create a new array
     //console.log(values);
   };
+  const updateWeek = (updatedValue) => {
+    setWeekValue(updatedValue); // Always create a new array
+    //console.log(values);
+  };
 
   //   const deleteBlog = (id) => setBlogs(blogs.filter((blog) => blog.id !== id));
 
   return (
-    <ValueContext.Provider value={{ values, updateValues }}>
+    <ValueContext.Provider
+      value={{ values, weekValue, updateValues, updateWeek }}
+    >
       {children}
     </ValueContext.Provider>
   );
@@ -36,7 +42,7 @@ export const ValueProvider = ({ children }) => {
 export const useValues = () => {
   const context = useContext(ValueContext);
   if (!context) {
-    throw new Error("useBlogs must be used within a BlogProvider");
+    throw new Error("useValues must be used within a BlogProvider");
   }
   return context;
 };

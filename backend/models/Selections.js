@@ -7,6 +7,7 @@ const selectionSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     }, // Links to User schema
+    week: { type: Number, required: true }, // Week number
     selections: [
       {
         gameKey: { type: String, required: true }, // Unique identifier (date + time)

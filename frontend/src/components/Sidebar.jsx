@@ -3,7 +3,7 @@ import { useValues } from "../providers/ValueContext";
 import { makeWeek } from "../../data/data";
 
 function Sidebar() {
-  const { updateValues } = useValues();
+  const { updateValues, updateWeek } = useValues();
 
   const scrollSidebar = (amount) => {
     const sidebar = document.querySelector(".overflow-auto");
@@ -15,6 +15,7 @@ function Sidebar() {
     const update = makeWeek(w, m);
     console.log(update);
     updateValues(update);
+    updateWeek(w);
   };
 
   const pattern = [
