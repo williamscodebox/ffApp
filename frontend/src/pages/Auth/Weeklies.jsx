@@ -76,11 +76,6 @@ const Weeklies = () => {
 
   //console.log(value);
 
-  // const dispatch = useDispatch();
-  // dispatch(setValues());
-  // use this code above to set the dates in the global value state to render the week.
-  // get the values from props in the selection or from an onClick in the links set
-
   return (
     <div className="flex flex-col mt-8">
       <div className="flex flex-col gap-6">
