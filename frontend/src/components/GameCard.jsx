@@ -7,8 +7,16 @@ const GameCard = ({ teamA, teamB, date, setSelections, selections }) => {
   //console.log("GameCard date:", gameKey);
 
   useEffect(() => {
-    setSelectedTeam(selections?.[gameKey] || "");
-  }, [selections, date]);
+    if (selections?.[gameKey]) {
+      setSelectedTeam(selections[gameKey]);
+    } else {
+      setSelectedTeam(""); // Ensures no old selection carries over
+    }
+  }, [selections]);
+
+  // useEffect(() => {
+  //   setSelectedTeam(selections?.[gameKey] || "");
+  // }, [selections, date]);
 
   const handleSelection = (team) => {
     const gameKey = `${date}-${teamA}-${teamB}`;

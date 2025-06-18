@@ -12,6 +12,9 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
         // },
         body: data,
       }),
+      invalidatesTags: (result, error, { userId, week }) => [
+        { type: "Selections", id: `${userId}-${week}` },
+      ],
     }),
     fetchSelections: builder.query({
       query: ({ userId, week }) => ({
@@ -21,6 +24,8 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
         //   Authorization: `Bearer ${localStorage.getItem("token")}`,
         // },
       }),
+      providesTags: (result, error, { userId, week }) =>
+        result ? [{ type: "Selections", id: `${userId}-${week}` }] : [],
     }),
     deleteSelections: builder.mutation({
       query: ({ userId, week }) => ({
@@ -30,6 +35,9 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
         //   Authorization: `Bearer ${localStorage.getItem("token")}`,
         // },
       }),
+      invalidatesTags: (result, error, { userId, week }) => [
+        { type: "Selections", id: `${userId}-${week}` },
+      ],
     }),
     updateSelections: builder.mutation({
       query: ({ userId, week, selections }) => ({
@@ -40,6 +48,9 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
         // },
         body: { selections },
       }),
+      invalidatesTags: (result, error, { userId, week }) => [
+        { type: "Selections", id: `${userId}-${week}` },
+      ],
     }),
   }),
 });
