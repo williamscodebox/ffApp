@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { schedule } from "../../../data/data.js";
 import GameCard from "../../components/GameCard.jsx";
 import { useValues } from "../../providers/ValueContext.jsx";
@@ -17,6 +17,7 @@ const Weeklies = () => {
   const [deleteSelections] = useDeleteSelectionsMutation();
   const { userInfo } = useSelector((state) => state.auth);
   const [hasSelections, setHasSelections] = useState(false);
+  const [queryTimestamp, setQueryTimestamp] = useState(Date.now());
 
   const { values, weekValue } = useValues();
   const value = values;
@@ -26,18 +27,23 @@ const Weeklies = () => {
     isLoading,
     error,
     refetch: refetchSelections,
-  } = useFetchSelectionsQuery({
-    userId: userInfo?._id,
-    week: weekValue,
-  });
+  } = useFetchSelectionsQuery(
+    {
+      userId: userInfo?._id,
+      week: weekValue,
+      t: queryTimestamp,
+    },
+    {
+      refetchOnMountOrArgChange: true,
+      keepUnusedDataFor: 0,
+    }
+  );
 
   const saveToDatabase = async () => {
     if (!userInfo?._id) {
       console.error("User ID is missing, cannot save selections.");
       return;
     }
-    //console.log("Selections saved:", selections);
-    //console.log(userInfo._id);
     const userId = userInfo._id;
     const week = weekValue;
     const selectionsArray = Object.entries(selections).map(
@@ -46,7 +52,6 @@ const Weeklies = () => {
         team,
       })
     );
-    //console.log("Selections Array:", selectionsArray);
     if (selectionsArray.length === 0) {
       console.warn("No selections to save.");
       return;
@@ -94,6 +99,7 @@ const Weeklies = () => {
         userId: userInfo._id,
         week: weekValue,
       }).unwrap();
+      setQueryTimestamp(Date.now());
       setSelections({});
       setHasSelections(false);
       console.log(`Selections deleted for Week ${weekValue + 1}!`);
@@ -103,6 +109,8 @@ const Weeklies = () => {
   };
 
   useEffect(() => {
+    setSelections({});
+    setHasSelections(false);
     refetchSelections();
   }, [weekValue]);
 
@@ -121,29 +129,16 @@ const Weeklies = () => {
       );
       setSelections(formattedSelections);
       setHasSelections(true);
-    } else {
+    } else if (
+      fetchedSelections?.week === weekValue ||
+      fetchedSelections === null ||
+      fetchedSelections === undefined
+    ) {
+      // explicit handling when the selection was deleted and refetch returns nothing
       setSelections({});
       setHasSelections(false);
     }
   }, [fetchedSelections, weekValue]);
-
-  // useEffect(() => {
-  //   if (fetchedSelections) {
-  //     const formattedSelections = fetchedSelections.selections.reduce(
-  //       (acc, selection) => {
-  //         acc[selection.gameKey] = selection.team;
-  //         return acc;
-  //       },
-  //       {}
-  //     );
-  //     setSelections(formattedSelections);
-  //     // console.log("Fetched selections:", fetchedSelections);
-  //     setHasSelections(
-  //       fetchedSelections?.selections?.length > 0 &&
-  //         fetchedSelections?.week === weekValue
-  //     );
-  //   }
-  // }, [fetchedSelections, value]);
 
   if (isLoading) return <p>Loading selections...</p>;
   if (error) {
@@ -152,8 +147,6 @@ const Weeklies = () => {
       error
     );
   }
-
-  //console.log(value);
 
   return (
     <div className="flex flex-col mt-8">

@@ -36,9 +36,10 @@ const fetchSelections = asyncHandler(async (req, res) => {
   const selections = await Selection.findOne({ userId, week });
 
   if (!selections) {
-    return res
-      .status(404)
-      .json({ message: `No selections found for Week ${week}` });
+    // return res
+    //   .status(404)
+    //   .json({ message: `No selections found for Week ${week}` });
+    return res.status(200).json({ week, selections: [] }); // ← explicitly empty
   }
 
   res.json(selections);
