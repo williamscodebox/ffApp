@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   Table,
   TableBody,
@@ -10,25 +11,220 @@ import {
 } from "@/components/ui/table";
 
 const ScoreBoard = () => {
+  const { userInfo } = useSelector((state) => state.auth);
   return (
     <div>
-      <div>ScoreBoard</div>
+      <div className="flex justify-center p-3">
+        {/* Here you will find your points totals */}
+      </div>
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption>Current player standings.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
+            <TableHead className="w-[100px]">Name</TableHead>
+            <TableHead>Week 1</TableHead>
+            <TableHead>Week 2</TableHead>
+            <TableHead>Week 3</TableHead>
+            <TableHead>Week 4</TableHead>
+            <TableHead>Week 5</TableHead>
+            <TableHead>Week 6</TableHead>
+            <TableHead>Week 7</TableHead>
+            <TableHead>Week 8</TableHead>
+            <TableHead className="text-right">Total Points</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell className="font-medium">INV001</TableCell>
-            <TableCell>Paid</TableCell>
-            <TableCell>Credit Card</TableCell>
-            <TableCell className="text-right">$250.00</TableCell>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">10</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">25</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">10</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">25</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">10</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">25</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">10</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">25</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">10</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">25</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">10</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">25</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">10</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">25</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">10</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">{userInfo.username}</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell>0</TableCell>
+            <TableCell className="text-right">25</TableCell>
           </TableRow>
         </TableBody>
       </Table>

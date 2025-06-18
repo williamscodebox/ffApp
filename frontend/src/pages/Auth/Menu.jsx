@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import { useSelector } from "react-redux";
+import ScoreBoard from "@/components/ScoreBoard";
 
 const Menu = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -17,11 +18,12 @@ const Menu = () => {
       <div className="w-[90%]">
         <div className="flex flex-col items-center text-2xl text-white bg-gray-700 h-[200vh] pt-10">
           <div>
-            <p>Welcome {userInfo.username}</p>
+            <p>ScoreBoard</p>
           </div>
           <div>
-            <p>Here are your stats</p>
+            <p>Welcome {userInfo.username}</p>
           </div>
+          <ScoreBoard />
         </div>
       </div>
     </div>
