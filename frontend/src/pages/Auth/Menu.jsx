@@ -17,7 +17,7 @@ const Menu = () => {
         <Sidebar />
       </div>
       <div className="w-[90%]">
-        <div className="flex flex-col items-center text-2xl text-white bg-gray-700 h-[200vh] pt-10">
+        <div className="flex flex-col items-center text-2xl text-white bg-gray-700 h-[300vh] pt-10">
           <div>
             <p>ScoreBoard</p>
           </div>
