@@ -89,6 +89,7 @@ export function DataTable({ columns, data }) {
     //   </Table>
     // </div>
     <div className="p-2">
+      {/* This is a simple table with column visibility toggle. */}
       <div className="inline-block border border-black shadow rounded">
         <div className="px-1 border-b border-black">
           <label>
@@ -119,6 +120,8 @@ export function DataTable({ columns, data }) {
           );
         })}
       </div>
+
+      {/* // Table starts here */}
       <div className="h-4" />
       <table>
         <thead>
@@ -148,27 +151,9 @@ export function DataTable({ columns, data }) {
             </tr>
           ))}
         </tbody>
-        <tfoot>
-          {table.getFooterGroups().map((footerGroup) => (
-            <tr key={footerGroup.id}>
-              {footerGroup.headers.map((header) => (
-                <th key={header.id} colSpan={header.colSpan}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.footer,
-                        header.getContext()
-                      )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </tfoot>
       </table>
       <div className="h-4" />
-      <button onClick={() => rerender()} className="border p-2">
-        Rerender
-      </button>
+      {/* This will show which columns are visible */}
       <div className="h-4" />
       <pre>{JSON.stringify(table.getState().columnVisibility, null, 2)}</pre>
     </div>
