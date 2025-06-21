@@ -120,11 +120,12 @@ export function DataTable({ columns, data }) {
           );
         })}
       </div>
-
       {/* // Table starts here */}
       <div className="h-4" />
       <table>
         <thead>
+          {" "}
+          {/*  /// This is the header of the table */}
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
