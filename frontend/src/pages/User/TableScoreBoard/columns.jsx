@@ -8,31 +8,6 @@
 // }
 
 export const columns = [
-  // {
-  //   accessorKey: "status",
-  //   header: "Status",
-  // },
-  // {
-  //   accessorKey: "email",
-  //   header: "Email",
-  // },
-  // {
-  //   accessorKey: "amount",
-  //   header: () => <div className="text-right">Amount</div>,
-  //   cell: ({ row }) => {
-  //     const amount = parseFloat(row.getValue("amount"));
-  //     const formatted = new Intl.NumberFormat("en-US", {
-  //       style: "currency",
-  //       currency: "USD",
-  //     }).format(amount);
-
-  //     return <div className="text-right font-medium">{formatted}</div>;
-  //   },
-  // },
-  // {
-  // header: "Name",
-  // footer: (props) => props.column.id,
-  // columns: [
   {
     accessorKey: "Name",
     cell: (info) => info.getValue(),
@@ -97,20 +72,7 @@ export const columns = [
     cell: (info) => info.getValue(),
     // header: () => <span>Last Name</span>,
   },
-  // ],
-  // },
-  // {
-  // header: "Info",
-  // footer: (props) => props.column.id,
-  // columns: [
-  //   {
-  //     accessorKey: "age",
-  //     header: () => "Age",
-  //     footer: (props) => props.column.id,
-  //   },
-  //   {
-  //     header: "More Info",
-  // column: [
+
   {
     accessorKey: "visits",
     header: () => <span>Visits</span>,

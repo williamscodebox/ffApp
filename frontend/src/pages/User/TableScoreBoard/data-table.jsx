@@ -15,14 +15,12 @@ import {
 } from "@/components/ui/table";
 import { useReducer, useState } from "react";
 
-// interface DataTableProps<TData, TValue> {
-//   columns: ColumnDef<TData, TValue>[]
-//   data: TData[]
-// }
-
 export function DataTable({ columns, data }) {
   const [tableColumns] = useState(() => [...columns]);
   const [columnVisibility, setColumnVisibility] = useState({});
+
+  const columnsPerGroup = 5;
+  const columnGroups = [];
 
   const rerender = useReducer(() => ({}), {})[1];
 
@@ -40,91 +38,38 @@ export function DataTable({ columns, data }) {
     getPaginationRowModel: getPaginationRowModel(),
   });
 
+  const allColumns = table.getAllLeafColumns();
+  const toggleableColumns = allColumns.slice(1); // skip column 0
+
+  for (let i = 0; i < toggleableColumns.length; i += columnsPerGroup) {
+    columnGroups.push(toggleableColumns.slice(i, i + columnsPerGroup));
+  }
+
   return (
-    // <div className="rounded-md border">
-    //   <Table>
-    //     <TableHeader>
-    //       {table.getHeaderGroups().map((headerGroup) => (
-    //         <TableRow key={headerGroup.id}>
-    //           {headerGroup.headers.map((header) => {
-    //             return (
-    //               <TableHead key={header.id}>
-    //                 {header.isPlaceholder
-    //                   ? null
-    //                   : flexRender(
-    //                       header.column.columnDef.header,
-    //                       header.getContext()
-    //                     )}
-    //               </TableHead>
-    //             );
-    //           })}
-    //         </TableRow>
-    //       ))}
-    //     </TableHeader>
-    //     <TableBody>
-    //       {table.getRowModel().rows?.length ? (
-    //         table.getRowModel().rows.map((row) => (
-    //           <TableRow
-    //             key={row.id}
-    //             data-state={row.getIsSelected() && "selected"}
-    //           >
-    //             {row.getVisibleCells().map((cell) => (
-    //               <TableCell key={cell.id}>
-    //                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
-    //               </TableCell>
-    //             ))}
-    //           </TableRow>
-    //         ))
-    //       ) : (
-    //         <TableRow>
-    //           <TableCell
-    //             colSpan={tableColumns.length}
-    //             className="h-24 text-center"
-    //           >
-    //             No results.
-    //           </TableCell>
-    //         </TableRow>
-    //       )}
-    //     </TableBody>
-    //   </Table>
-    // </div>
     <div className="p-2">
       {/* This is a simple table with column visibility toggle. */}
-      <div className="inline-block border border-black shadow rounded">
-        <div className="px-1 border-b border-black">
-          <label>
-            <input
-              {...{
-                type: "checkbox",
-                checked: table.getIsAllColumnsVisible(),
-                onChange: table.getToggleAllColumnsVisibilityHandler(),
-              }}
-            />{" "}
-            Toggle All
-          </label>
-        </div>
-        {table.getAllLeafColumns().map((column) => {
+
+      <div className="mb-4">
+        {columnGroups.map((group, groupIndex) => {
+          const allVisible = group.every((col) => col.getIsVisible());
           return (
-            <div key={column.id} className="px-1">
-              <label>
-                <input
-                  {...{
-                    type: "checkbox",
-                    checked: column.getIsVisible(),
-                    onChange: column.getToggleVisibilityHandler(),
-                  }}
-                />{" "}
-                {column.id}
-              </label>
-            </div>
+            <button
+              key={groupIndex}
+              onClick={() => {
+                group.forEach((col) => col.toggleVisibility(!allVisible));
+              }}
+              className="m-1 px-2 py-1 border rounded shadow text-sm"
+            >
+              Toggle Group {groupIndex + 1}
+            </button>
           );
         })}
       </div>
+
       {/* // Table starts here */}
       <div className="h-4" />
       <Table>
         <TableHeader>
-          {" "}
           {/*  /// This is the header of the table */}
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -155,8 +100,8 @@ export function DataTable({ columns, data }) {
       </Table>
       <div className="h-4" />
       {/* This will show which columns are visible */}
-      <div className="h-4" />
-      <pre>{JSON.stringify(table.getState().columnVisibility, null, 2)}</pre>
+      {/* <div className="h-4" />
+      <pre>{JSON.stringify(table.getState().columnVisibility, null, 2)}</pre> */}
     </div>
   );
 }
