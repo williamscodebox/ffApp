@@ -34,16 +34,68 @@ export const columns = [
   // footer: (props) => props.column.id,
   // columns: [
   {
-    accessorKey: "firstName",
+    accessorKey: "Name",
     cell: (info) => info.getValue(),
-    footer: (props) => props.column.id,
   },
   {
     accessorFn: (row) => row.lastName,
-    id: "lastName",
+    id: "Week 1",
     cell: (info) => info.getValue(),
-    header: () => <span>Last Name</span>,
-    footer: (props) => props.column.id,
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 2",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 3",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 4",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 5",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 6",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 7",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 8",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 9",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 10",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
   },
   // ],
   // },
@@ -62,20 +114,15 @@ export const columns = [
   {
     accessorKey: "visits",
     header: () => <span>Visits</span>,
-    footer: (props) => props.column.id,
   },
   {
     accessorKey: "status",
     header: "Status",
     footer: (props) => props.column.id,
   },
-  {
-    accessorKey: "progress",
-    header: "Profile Progress",
-    footer: (props) => props.column.id,
-  },
-  // ],
-  //     },
-  //   ],
+  // {
+  //   accessorKey: "progress",
+  //   header: "Profile Progress",
+  //   footer: (props) => props.column.id,
   // },
 ];

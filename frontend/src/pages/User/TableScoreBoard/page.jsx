@@ -42,7 +42,7 @@ export default function DemoPage() {
       //   email: "m@example.com",
       // },
       {
-        firstName: "tanner",
+        Name: "tanner",
         lastName: "linsley",
         age: 24,
         visits: 100,
