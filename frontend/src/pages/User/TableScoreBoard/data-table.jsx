@@ -13,14 +13,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 export function DataTable({ columns, data }) {
   const [tableColumns] = useState(() => [...columns]);
-  const [columnVisibility, setColumnVisibility] = useState({});
 
-  const columnsPerGroup = 5;
+  const [activeGroupIndex, setActiveGroupIndex] = useState(0);
+
+  const columnsPerGroup = 6;
   const columnGroups = [];
+
+  const [columnVisibility, setColumnVisibility] = useState({});
 
   const rerender = useReducer(() => ({}), {})[1];
 
@@ -38,8 +41,30 @@ export function DataTable({ columns, data }) {
     getPaginationRowModel: getPaginationRowModel(),
   });
 
+  useEffect(() => {
+    const allCols = table.getAllLeafColumns();
+    const visibility = {};
+
+    // Always show the first and last
+    visibility[allCols[0].id] = true;
+    visibility[allCols[allCols.length - 1].id] = true;
+
+    const toggleable = allCols.slice(1, -1);
+    const visibleGroup = toggleable.slice(0, columnsPerGroup);
+
+    allCols.forEach((col) => {
+      visibility[col.id] =
+        col.id === allCols[0].id ||
+        col.id === allCols[allCols.length - 1].id ||
+        visibleGroup.includes(col);
+    });
+
+    setColumnVisibility(visibility);
+    setActiveGroupIndex(0);
+  }, [table]);
+
   const allColumns = table.getAllLeafColumns();
-  const toggleableColumns = allColumns.slice(1); // skip column 0
+  const toggleableColumns = allColumns.slice(1, -1); // skip column 0
 
   for (let i = 0; i < toggleableColumns.length; i += columnsPerGroup) {
     columnGroups.push(toggleableColumns.slice(i, i + columnsPerGroup));
@@ -56,48 +81,86 @@ export function DataTable({ columns, data }) {
             <button
               key={groupIndex}
               onClick={() => {
-                group.forEach((col) => col.toggleVisibility(!allVisible));
+                const newVisibility = {};
+
+                // Always show first and last columns
+                newVisibility[allColumns[0].id] = true;
+                newVisibility[allColumns[allColumns.length - 1].id] = true;
+
+                // Show selected group
+                toggleableColumns.forEach((col) => {
+                  newVisibility[col.id] = group.includes(col);
+                });
+
+                setColumnVisibility(newVisibility);
+
+                setActiveGroupIndex(groupIndex); // ← track active group
               }}
-              className="m-1 px-2 py-1 border rounded shadow text-sm"
+              className={`m-1 px-2 py-1 border rounded shadow text-sm ${
+                activeGroupIndex === groupIndex ? "bg-blue-500 text-white" : ""
+              }`}
             >
-              Toggle Group {groupIndex + 1}
+              Toggle Group {groupIndex + 1} {/*/ / Shows the group number */}
             </button>
           );
         })}
       </div>
 
       {/* // Table starts here */}
-      <div className="h-4" />
-      <Table>
-        <TableHeader>
-          {/*  /// This is the header of the table */}
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <TableHead key={header.id} colSpan={header.colSpan}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                </TableHead>
-              ))}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows.map((row) => (
-            <TableRow key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <div className="overflow-x-auto">
+        <div className="h-4" />
+        <Table className="table-fixed w-full">
+          <TableHeader>
+            {/*  /// This is the header of the table */}
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead
+                    key={header.id}
+                    colSpan={header.colSpan}
+                    className={
+                      header.column.id === allColumns[0].id
+                        ? "sticky left-0 w-30 z-10 bg-white"
+                        : header.column.id ===
+                          allColumns[allColumns.length - 1].id
+                        ? "sticky right-0 w-30 z-10 bg-white"
+                        : ""
+                    }
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows.map((row) => (
+              <TableRow key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell
+                    key={cell.id}
+                    className={
+                      cell.column.id === allColumns[0].id
+                        ? "sticky left-0 z-10 bg-gray-500"
+                        : cell.column.id ===
+                          allColumns[allColumns.length - 1].id
+                        ? "sticky right-0 z-10 bg-gray-500"
+                        : ""
+                    }
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
       <div className="h-4" />
       {/* This will show which columns are visible */}
       {/* <div className="h-4" />

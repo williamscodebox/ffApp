@@ -79,7 +79,7 @@ export const columns = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "Total Points",
     footer: (props) => props.column.id,
   },
   // {

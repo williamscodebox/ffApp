@@ -25,7 +25,7 @@ const Menu = () => {
             <p>Welcome {userInfo.username}</p>
           </div>
           <ScoreBoard />
-          <div className="w-[75%] flex justify-center">
+          <div className="w-[85%] flex justify-center">
             <DemoPage />
           </div>
         </div>
