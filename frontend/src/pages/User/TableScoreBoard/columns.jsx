@@ -24,6 +24,7 @@ export const columns = [
     cell: (info) => info.getValue(),
     // header: () => <span>Last Name</span>,
   },
+
   {
     accessorFn: (row) => row.lastName,
     id: "Week 3",
@@ -72,16 +73,61 @@ export const columns = [
     cell: (info) => info.getValue(),
     // header: () => <span>Last Name</span>,
   },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 11",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 12",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 13",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 14",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 15",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 16",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 17",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.lastName,
+    id: "Week 18",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
+  {
+    accessorFn: (row) => row.status,
+    id: "Total Points",
+    cell: (info) => info.getValue(),
+    // header: () => <span>Last Name</span>,
+  },
 
-  {
-    accessorKey: "visits",
-    header: () => <span>Visits</span>,
-  },
-  {
-    accessorKey: "status",
-    header: "Total Points",
-    footer: (props) => props.column.id,
-  },
   // {
   //   accessorKey: "progress",
   //   header: "Profile Progress",

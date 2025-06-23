@@ -17,15 +17,15 @@ const Menu = () => {
         <Sidebar />
       </div>
       <div className="w-[90%]">
-        <div className="flex flex-col items-center text-2xl text-white bg-gray-700 h-[300vh] pt-10">
-          <div>
+        <div className="flex flex-col items-center text-2xl text-white bg-gray-700 h-screen pt-10">
+          {/* <div>
             <p>ScoreBoard</p>
-          </div>
+          </div> */}
           <div>
-            <p>Welcome {userInfo.username}</p>
+            <p>Welcome to the Rankings</p>
           </div>
-          <ScoreBoard />
-          <div className="w-[85%] flex justify-center">
+          {/* <ScoreBoard /> */}
+          <div className="w-[70%] flex justify-center">
             <DemoPage />
           </div>
         </div>

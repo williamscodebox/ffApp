@@ -8,6 +8,7 @@ import {
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -20,7 +21,7 @@ export function DataTable({ columns, data }) {
 
   const [activeGroupIndex, setActiveGroupIndex] = useState(0);
 
-  const columnsPerGroup = 6;
+  const columnsPerGroup = 9;
   const columnGroups = [];
 
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -109,7 +110,7 @@ export function DataTable({ columns, data }) {
       {/* // Table starts here */}
       <div className="overflow-x-auto">
         <div className="h-4" />
-        <Table className="table-fixed w-full">
+        <Table className="table-fixed w-full border-2 border-shadow-lg">
           <TableHeader>
             {/*  /// This is the header of the table */}
             {table.getHeaderGroups().map((headerGroup) => (
@@ -120,11 +121,11 @@ export function DataTable({ columns, data }) {
                     colSpan={header.colSpan}
                     className={
                       header.column.id === allColumns[0].id
-                        ? "sticky left-0 w-30 z-10 bg-white"
+                        ? "sticky left-0 w-25 z-10 bg-gray-900 text-white"
                         : header.column.id ===
                           allColumns[allColumns.length - 1].id
-                        ? "sticky right-0 w-30 z-10 bg-white"
-                        : ""
+                        ? "sticky right-0 w-25 z-10 bg-gray-900 text-white"
+                        : "w-15 z-10 bg-gray-800 text-white"
                     }
                   >
                     {header.isPlaceholder
@@ -161,7 +162,10 @@ export function DataTable({ columns, data }) {
           </TableBody>
         </Table>
       </div>
-      <div className="h-4" />
+      <div className="h-5" />
+      <p className="text-sm flex justify-center text-gray-400">
+        Current player standings.
+      </p>
       {/* This will show which columns are visible */}
       {/* <div className="h-4" />
       <pre>{JSON.stringify(table.getState().columnVisibility, null, 2)}</pre> */}
