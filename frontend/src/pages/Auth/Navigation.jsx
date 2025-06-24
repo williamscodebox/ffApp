@@ -91,45 +91,39 @@ const Navigation = () => {
                 <AiOutlineLogin className="mr-2" size={26} />
                 <span className="hidden sm:block">Login</span>
               </Link>
-
-              <Link
-                to="/register"
-                className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
-              >
-                <AiOutlineUserAdd className="mr-2" size={26} />
-                <span className="hidden sm:block">Register</span>
-              </Link>
             </div>
           )}
 
           {dropdownOpen && userInfo && (
             <ul className="absolute right-0 mt-[9rem] w-48 bg-white text-gray-800 rounded-lg shadow-xl transition-all duration-300 ease-in-out">
-              {/* <li>
-                <Link
-                  to="/profile"
-                  className="block px-4 py-2 hover:bg-gray-100 rounded-t-lg"
-                  onClick={dropdown}
-                >
-                  Profile
-                </Link>
-              </li>
               {userInfo.isAdmin && (
                 <>
                   <li>
                     <Link
-                      to="/admin/movies/dashboard"
-                      className="block px-4 py-2 hover:bg-gray-100"
-                      onClick={dropdown}
+                      to="/register"
+                      onClick={toggleDropdown}
+                      className="flex items-center py-1 transition-all duration-300 hover:translate-x-2"
                     >
-                      Dashboard
+                      <AiOutlineUserAdd className="mr-2" size={26} />
+                      <span className="hidden sm:block">Register Users</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/admin"
+                      onClick={toggleDropdown}
+                      className="flex items-center transition-all duration-300 hover:translate-x-2"
+                    >
+                      <AiOutlineUserAdd className="mr-2" size={26} />
+                      <span className="hidden sm:block">Admin</span>
                     </Link>
                   </li>
                 </>
-              )} */}
+              )}
               <li>
                 <button
                   onClick={logoutHandler}
-                  className="block w-full px-4 py-2 text-left hover:bg-gray-100 rounded-b-lg"
+                  className="block w-full px-4 py-1 text-left hover:bg-gray-100 rounded-b-lg"
                 >
                   Logout
                 </button>

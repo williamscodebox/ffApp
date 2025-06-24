@@ -24,7 +24,7 @@ const Register = () => {
   const redirect = sp.get("redirect") || "/";
 
   useEffect(() => {
-    if (userInfo) {
+    if (!userInfo.isAdmin) {
       navigate(redirect);
     }
   }, [navigate, redirect, userInfo]);
@@ -129,7 +129,7 @@ const Register = () => {
           {isLoading && <Loader />}
         </form>
 
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <p className="text-white">
             Already have an account?{" "}
             <Link
@@ -139,7 +139,7 @@ const Register = () => {
               Login
             </Link>
           </p>
-        </div>
+        </div> */}
       </div>
       <img
         src="/ffAppRegister.jpg"

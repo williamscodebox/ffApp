@@ -89,7 +89,7 @@ const Login = () => {
             {isLoading && <Loader />}
           </form>
 
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <p className="text-white">
               New Customer?{" "}
               <Link
@@ -99,7 +99,7 @@ const Login = () => {
                 Register
               </Link>
             </p>
-          </div>
+          </div> */}
         </div>
 
         <img
