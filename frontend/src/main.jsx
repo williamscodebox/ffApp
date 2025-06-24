@@ -20,17 +20,25 @@ import Overview from "./pages/Auth/Overview.jsx";
 import Menu from "./pages/Auth/Menu.jsx";
 import Week from "./pages/Auth/Week.jsx";
 
+// Admin
+import AdminRoute from "./pages/Auth/AdminRoute.jsx";
+import Admin from "./pages/User/Admin/Admin.jsx";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
       <Route index={true} path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
 
       <Route path="" element={<PrivateRoute />}>
         <Route path="/overview" element={<Overview />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/week" element={<Week />} />
+      </Route>
+
+      <Route path="" element={<AdminRoute />}>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/register" element={<Register />} />
       </Route>
     </Route>
   )
