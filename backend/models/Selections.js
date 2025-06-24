@@ -10,7 +10,7 @@ const selectionSchema = new mongoose.Schema(
     week: { type: Number, required: true }, // Week number
     selections: [
       {
-        gameKey: { type: String, required: true }, // Unique identifier (date + time)
+        gameKey: { type: String, required: true }, // Unique identifier ${date}-${teamA}-${teamB}
         team: { type: String, required: true },
       },
     ],
