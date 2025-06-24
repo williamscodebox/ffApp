@@ -1,4 +1,5 @@
 import asyncHandler from "../middlewares/asyncHandler.js";
+import User from "../models/User.js";
 
 const fetchLeaderboard = asyncHandler(async (req, res) => {
   try {

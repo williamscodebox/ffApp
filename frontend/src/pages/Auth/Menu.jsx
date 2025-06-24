@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar";
 import { useSelector } from "react-redux";
 import ScoreBoard from "@/components/ScoreBoard";
 import DemoPage from "../User/TableScoreBoard/page";
+import Tester from "@/components/Tester";
 
 const Menu = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -28,6 +29,7 @@ const Menu = () => {
           <div className="w-[70%] flex justify-center">
             <DemoPage />
           </div>
+          <Tester />
         </div>
       </div>
     </div>
