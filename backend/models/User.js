@@ -18,6 +18,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    score: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "UserScore",
+    },
     isAdmin: {
       type: Boolean,
       required: true,

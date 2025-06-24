@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import asyncHandler from "../middlewares/asyncHandler.js";
 import createToken from "../utils/createToken.js";
+import UserScore from "../models/UserScore.js";
 
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
@@ -21,9 +22,25 @@ const createUser = asyncHandler(async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  const newUser = new User({ username, email, password: hashedPassword });
+  let scoreDoc;
+  let newUser;
 
   try {
+    newUser = new User({
+      username,
+      email,
+      password: hashedPassword,
+    });
+
+    scoreDoc = await UserScore.create({
+      user: newUser._id,
+      weekScores: Object.fromEntries(
+        Array.from({ length: 18 }, (_, i) => [`Week_${i + 1}`, 0])
+      ), // optional: prefill weeks with 0s
+    });
+
+    newUser.score = scoreDoc._id;
+
     await newUser.save();
     createToken(res, newUser._id);
 
@@ -34,6 +51,10 @@ const createUser = asyncHandler(async (req, res) => {
       isAdmin: newUser.isAdmin,
     });
   } catch (error) {
+    console.error("User registration error:", error);
+    // Clean up any dangling score doc
+    if (scoreDoc) await UserScore.findByIdAndDelete(scoreDoc._id);
+    if (newUser && !newUser.score) await User.findByIdAndDelete(newUser._id);
     res.status(400);
     throw new Error("Invalid user data");
   }
