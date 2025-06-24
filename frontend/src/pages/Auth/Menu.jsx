@@ -29,7 +29,6 @@ const Menu = () => {
           <div className="w-[70%] flex justify-center">
             <DemoPage />
           </div>
-          <Tester />
         </div>
       </div>
     </div>
