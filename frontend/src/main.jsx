@@ -23,6 +23,7 @@ import Week from "./pages/Auth/Week.jsx";
 // Admin
 import AdminRoute from "./pages/Auth/AdminRoute.jsx";
 import Admin from "./pages/User/Admin/Admin.jsx";
+import AdminWeek from "./pages/User/Admin/AdminWeek";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +39,7 @@ const router = createBrowserRouter(
 
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin" element={<Admin />} />
+        <Route path="/adminWeek" element={<AdminWeek />} />
         <Route path="/register" element={<Register />} />
       </Route>
     </Route>

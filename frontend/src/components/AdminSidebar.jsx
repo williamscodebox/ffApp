@@ -41,7 +41,7 @@ function AdminSidebar() {
         <ul className="mt-6 space-y-4">
           <li>
             <Link
-              to="" // This should be the route to the admin home page
+              to="/Admin" // This should be the route to the admin home page
               className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
             >
               <span className="hidden sm:block">Home</span>
@@ -52,7 +52,7 @@ function AdminSidebar() {
             return (
               <li key={index}>
                 <Link
-                  to="" // This should be the route to the admin page for each week
+                  to="/AdminWeek" // This should be the route to the admin page for each week
                   className="flex items-center text-white transition-all duration-300 hover:translate-x-2"
                   onClick={() => handleClick(item[0], item[1])}
                 >
