@@ -35,9 +35,9 @@ const AdminWeeklies = () => {
   //     }
   //   );
 
-  const saveToDatabase = async () => {
-    if (!userInfo?._id) {
-      console.error("User ID is missing, cannot save selections.");
+  const saveToResults = async () => {
+    if (!userInfo?.isAdmin) {
+      console.error("User is not admin, cannot save results.");
       return;
     }
     const userId = userInfo._id;
@@ -49,7 +49,7 @@ const AdminWeeklies = () => {
       })
     );
     if (selectionsArray.length === 0) {
-      console.warn("No selections to save.");
+      console.warn("No results to save.");
       return;
     }
     try {
@@ -59,9 +59,9 @@ const AdminWeeklies = () => {
         week,
       }).unwrap();
       setHasSelections(true);
-      console.log(`Selections saved successfully for Week ${weekValue + 1}!`);
+      console.log(`Results saved successfully for Week ${weekValue + 1}!`);
     } catch (error) {
-      console.error("Error saving selections:", error);
+      console.error("Error saving Results:", error);
     }
   };
 
@@ -131,7 +131,7 @@ const AdminWeeklies = () => {
         })}
 
         <button
-          onClick={saveToDatabase}
+          onClick={saveToResults}
           className="mt-4 p-3 bg-blue-500 text-white rounded"
         >
           Save Results
