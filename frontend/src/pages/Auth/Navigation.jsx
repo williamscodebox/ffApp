@@ -95,7 +95,7 @@ const Navigation = () => {
           )}
 
           {dropdownOpen && userInfo && (
-            <ul className="absolute right-0 mt-[9rem] w-48 bg-white text-gray-800 rounded-lg shadow-xl transition-all duration-300 ease-in-out">
+            <ul className="absolute right-0 mt-[9rem] w-48 bg-white opacity-85 text-gray-800 rounded-lg shadow-xl transition-all duration-300 ease-in-out">
               {userInfo.isAdmin && (
                 <>
                   <li>
