@@ -16,4 +16,4 @@ export const resultsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useCreateResultsMutation } = selectionsApiSlice;
+export const { useCreateResultsMutation } = resultsApiSlice;

@@ -24,4 +24,4 @@ const createResults = asyncHandler(async (req, res) => {
   }
 });
 
-export {};
+export { createResults };

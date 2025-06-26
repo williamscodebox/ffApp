@@ -3,14 +3,11 @@ import { schedule } from "../../../../data/data.js";
 import GameCard from "../../../components/GameCard.jsx";
 import { useValues } from "../../../providers/ValueContext.jsx";
 import { useSelector } from "react-redux";
-import //   useCreateSelectionsMutation,
-//   useFetchSelectionsQuery,
-
-"../../../redux/api/selections.js";
+import { useCreateResultsMutation } from "@/redux/api/results.js";
 
 const AdminWeeklies = () => {
   const [selections, setSelections] = useState({});
-  //   const [createSelections] = useCreateSelectionsMutation();
+  const [createResults] = useCreateResultsMutation();
   const { userInfo } = useSelector((state) => state.auth);
   const [hasSelections, setHasSelections] = useState(false);
   const [queryTimestamp, setQueryTimestamp] = useState(Date.now());
@@ -40,7 +37,6 @@ const AdminWeeklies = () => {
       console.error("User is not admin, cannot save results.");
       return;
     }
-    const userId = userInfo._id;
     const week = weekValue;
     const selectionsArray = Object.entries(selections).map(
       ([gameKey, team]) => ({
@@ -53,9 +49,8 @@ const AdminWeeklies = () => {
       return;
     }
     try {
-      await createSelections({
+      await createResults({
         selectionsArray,
-        userId,
         week,
       }).unwrap();
       setHasSelections(true);
