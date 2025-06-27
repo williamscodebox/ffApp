@@ -4,6 +4,7 @@ import GameCard from "../../../components/GameCard.jsx";
 import { useValues } from "../../../providers/ValueContext.jsx";
 import { useSelector } from "react-redux";
 import { useCreateResultsMutation } from "@/redux/api/results.js";
+import { toast } from "react-toastify";
 
 const AdminWeeklies = () => {
   const [selections, setSelections] = useState({});
@@ -46,6 +47,7 @@ const AdminWeeklies = () => {
     );
     if (selectionsArray.length === 0) {
       console.warn("No results to save.");
+      toast.error("No results entered.");
       return;
     }
     try {
@@ -54,9 +56,11 @@ const AdminWeeklies = () => {
         week,
       }).unwrap();
       setHasSelections(true);
+      toast.success("Results saved");
       console.log(`Results saved successfully for Week ${weekValue + 1}!`);
     } catch (error) {
       console.error("Error saving Results:", error);
+      toast.error(error.data.message);
     }
   };
 
