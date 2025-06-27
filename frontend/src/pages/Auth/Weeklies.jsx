@@ -9,6 +9,7 @@ import {
   useFetchSelectionsQuery,
   useUpdateSelectionsMutation,
 } from "../../redux/api/selections.js";
+import { toast } from "react-toastify";
 
 const Weeklies = () => {
   const [selections, setSelections] = useState({});
@@ -54,6 +55,7 @@ const Weeklies = () => {
     );
     if (selectionsArray.length === 0) {
       console.warn("No selections to save.");
+      toast.error("No selections to save.");
       return;
     }
     try {
@@ -63,9 +65,11 @@ const Weeklies = () => {
         week,
       }).unwrap();
       setHasSelections(true);
+      toast.success("Selections saved successfully");
       console.log(`Selections saved successfully for Week ${weekValue + 1}!`);
     } catch (error) {
       console.error("Error saving selections:", error);
+      toast.error(error.data.message);
     }
   };
 
@@ -85,9 +89,11 @@ const Weeklies = () => {
         week: weekValue,
         selections: selectionsArray,
       }).unwrap();
+      toast.success("Selections updated successfully");
       console.log(`Selections updated for Week ${weekValue + 1}!`);
     } catch (error) {
       console.error("Error updating selections:", error);
+      toast.error(error.data.message);
     }
   };
 
@@ -101,10 +107,11 @@ const Weeklies = () => {
       }).unwrap();
       setQueryTimestamp(Date.now());
       setSelections({});
-      setHasSelections(false);
+      toast.success("Selections deleted successfully");
       console.log(`Selections deleted for Week ${weekValue + 1}!`);
     } catch (error) {
       console.error("Error deleting selections:", error);
+      toast.error(error.data.message);
     }
   };
 
@@ -146,6 +153,7 @@ const Weeklies = () => {
       `Error fetching selections for week ${weekValue + 1}:`,
       error
     );
+    toast.error(error.data.message);
   }
 
   return (
