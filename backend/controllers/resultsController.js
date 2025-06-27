@@ -3,6 +3,7 @@ import Results from "../models/Results.js";
 
 const createResults = asyncHandler(async (req, res) => {
   const { selectionsArray, week } = req.body;
+
   const existingResults = await Results.findOne({ week });
   if (existingResults) {
     res.status(400);
@@ -22,6 +23,21 @@ const createResults = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Invalid Results data");
   }
+});
+
+const fetchResults = asyncHandler(async (req, res) => {
+  const { week } = req.params;
+
+  const results = await Results.findOne({ week });
+
+  if (!resultss) {
+    // return res
+    //   .status(404)
+    //   .json({ message: `No selections found for Week ${week}` });
+    return res.status(200).json({ week, results: [] }); // ← explicitly empty
+  }
+
+  res.json(results);
 });
 
 export { createResults };
