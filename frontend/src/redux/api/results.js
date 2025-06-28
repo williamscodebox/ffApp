@@ -13,7 +13,19 @@ export const resultsApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    fetchResults: builder.query({
+      query: ({ week }) => ({
+        url: `${RESULTS_URL}/${week}`, // Fetch results by week
+        method: "GET",
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem("token")}`,
+        // },
+      }),
+      // providesTags: (result, error, { userId, week }) =>
+      //   result ? [{ type: "Selections", id: `${userId}-${week}` }] : [],
+    }),
   }),
 });
 
-export const { useCreateResultsMutation } = resultsApiSlice;
+export const { useCreateResultsMutation, useFetchResultsQuery } =
+  resultsApiSlice;

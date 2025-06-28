@@ -3,7 +3,10 @@ import { schedule } from "../../../../data/data.js";
 import GameCard from "../../../components/GameCard.jsx";
 import { useValues } from "../../../providers/ValueContext.jsx";
 import { useSelector } from "react-redux";
-import { useCreateResultsMutation } from "@/redux/api/results.js";
+import {
+  useCreateResultsMutation,
+  useFetchResultsQuery,
+} from "@/redux/api/results.js";
 import { toast } from "react-toastify";
 
 const AdminWeeklies = () => {
@@ -16,22 +19,21 @@ const AdminWeeklies = () => {
   const { values, weekValue } = useValues();
   const value = values;
 
-  //   const {
-  //     data: fetchedSelections,
-  //     isLoading,
-  //     error,
-  //     refetch: refetchSelections,
-  //   } = useFetchSelectionsQuery(
-  //     {
-  //       userId: userInfo?._id,
-  //       week: weekValue,
-  //       t: queryTimestamp,
-  //     },
-  //     {
-  //       refetchOnMountOrArgChange: true,
-  //       keepUnusedDataFor: 0,
-  //     }
-  //   );
+  const {
+    data: fetchedResults,
+    isLoading,
+    error,
+    refetch: refetchResults,
+  } = useFetchResultsQuery(
+    {
+      week: weekValue,
+      t: queryTimestamp,
+    },
+    {
+      refetchOnMountOrArgChange: true,
+      keepUnusedDataFor: 0,
+    }
+  );
 
   const saveToResults = async () => {
     if (!userInfo?.isAdmin) {
@@ -64,45 +66,40 @@ const AdminWeeklies = () => {
     }
   };
 
-  //   useEffect(() => {
-  //     setSelections({});
-  //     setHasSelections(false);
-  //     refetchSelections();
-  //   }, [weekValue]);
+  useEffect(() => {
+    setSelections({});
+    setHasSelections(false);
+    refetchResults();
+  }, [weekValue]);
 
-  //   useEffect(() => {
-  //     if (
-  //       fetchedSelections?.selections?.length > 0 &&
-  //       fetchedSelections?.week === weekValue
-  //     ) {
-  //       console.log("Fetched selections:", fetchedSelections.selections);
-  //       const formattedSelections = fetchedSelections.selections.reduce(
-  //         (acc, selection) => {
-  //           acc[selection.gameKey] = selection.team;
-  //           return acc;
-  //         },
-  //         {}
-  //       );
-  //       setSelections(formattedSelections);
-  //       setHasSelections(true);
-  //     } else if (
-  //       fetchedSelections?.week === weekValue ||
-  //       fetchedSelections === null ||
-  //       fetchedSelections === undefined
-  //     ) {
-  //       // explicit handling when the selection was deleted and refetch returns nothing
-  //       setSelections({});
-  //       setHasSelections(false);
-  //     }
-  //   }, [fetchedSelections, weekValue]);
+  useEffect(() => {
+    if (
+      fetchedResults?.winners?.length > 0 &&
+      fetchedResults?.week === weekValue
+    ) {
+      console.log("Fetched Results:", fetchedResults.winners);
+      const formattedResults = fetchedResults.winners.reduce((acc, winner) => {
+        acc[winner.gameKey] = winner.team;
+        return acc;
+      }, {});
+      setSelections(formattedResults);
+      setHasSelections(true);
+    } else if (
+      fetchedResults?.week === weekValue ||
+      fetchedResults === null ||
+      fetchedResults === undefined
+    ) {
+      // explicit handling when the selection was deleted and refetch returns nothing
+      setSelections({});
+      setHasSelections(false);
+    }
+  }, [fetchedResults, weekValue]);
 
-  //   if (isLoading) return <p>Loading selections...</p>;
-  //   if (error) {
-  //     console.error(
-  //       `Error fetching selections for week ${weekValue + 1}:`,
-  //       error
-  //     );
-  //   }
+  if (isLoading) return <p>Loading results...</p>;
+  if (error) {
+    console.error(`Error fetching results for week ${weekValue + 1}:`, error);
+    toast.error(error.data.message);
+  }
 
   return (
     <div className="flex flex-col mt-8">

@@ -30,7 +30,7 @@ const fetchResults = asyncHandler(async (req, res) => {
 
   const results = await Results.findOne({ week });
 
-  if (!resultss) {
+  if (!results) {
     // return res
     //   .status(404)
     //   .json({ message: `No selections found for Week ${week}` });
@@ -40,4 +40,4 @@ const fetchResults = asyncHandler(async (req, res) => {
   res.json(results);
 });
 
-export { createResults };
+export { createResults, fetchResults };
