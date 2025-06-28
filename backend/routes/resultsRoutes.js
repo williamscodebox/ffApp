@@ -4,6 +4,8 @@ import express from "express";
 import {
   createResults,
   fetchResults,
+  updateResults,
+  deleteResults,
 } from "../controllers/resultsController.js";
 
 // middlewares
@@ -13,7 +15,7 @@ const router = express.Router();
 
 router.route("/").post(authenticate, authorizeAdmin, createResults);
 router.route("/:week").get(authenticate, authorizeAdmin, fetchResults);
-// router.route("/:userId/:week").put(authenticate, updateSelections);
-// router.route("/:userId/:week").delete(authenticate, deleteSelections);
+router.route("/:week").put(authenticate, authorizeAdmin, updateResults);
+router.route("/:week").delete(authenticate, authorizeAdmin, deleteResults);
 
 export default router;
