@@ -40,4 +40,39 @@ const fetchResults = asyncHandler(async (req, res) => {
   res.json(results);
 });
 
-export { createResults, fetchResults };
+const updateResults = asyncHandler(async (req, res) => {
+  const { week } = req.params;
+  const { results } = req.body;
+
+  const existingResults = await Results.findOne({ week });
+
+  if (!existingResults) {
+    return res
+      .status(404)
+      .json({ message: `No results found for Week ${week}` });
+  }
+
+  existingResults.winners = results; // Update results
+  await existingresults.save();
+
+  res.status(200).json({
+    message: `Results for Week ${week} updated successfully`,
+    results,
+  });
+});
+
+const deleteResults = asyncHandler(async (req, res) => {
+  const { week } = req.params;
+
+  const deletedResults = await Results.findOneAndDelete({ week });
+
+  if (!deletedResults) {
+    return res
+      .status(404)
+      .json({ message: `No Result found for Week ${week}` });
+  }
+
+  res.json({ message: `Results for Week ${week} deleted successfully` });
+});
+
+export { createResults, fetchResults, updateResults, deleteResults };
