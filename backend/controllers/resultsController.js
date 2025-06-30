@@ -53,7 +53,7 @@ const updateResults = asyncHandler(async (req, res) => {
   }
 
   existingResults.winners = results; // Update results
-  await existingresults.save();
+  await existingResults.save();
 
   res.status(200).json({
     message: `Results for Week ${week} updated successfully`,

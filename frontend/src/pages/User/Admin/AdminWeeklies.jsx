@@ -80,10 +80,12 @@ const AdminWeeklies = () => {
       })
     );
 
+    console.log("Updating results with selections:", selectionsArray);
+
     try {
       await updateResults({
         week: weekValue,
-        winners: selectionsArray,
+        results: selectionsArray,
       }).unwrap();
       toast.success("Results updated successfully");
       console.log(`Results updated for Week ${weekValue + 1}!`);
@@ -102,6 +104,7 @@ const AdminWeeklies = () => {
       }).unwrap();
       setQueryTimestamp(Date.now());
       setSelections({});
+      setHasSelections(false);
       toast.success("Results deleted successfully");
       console.log(`Results deleted for Week ${weekValue + 1}!`);
     } catch (error) {

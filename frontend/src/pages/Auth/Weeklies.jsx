@@ -107,6 +107,7 @@ const Weeklies = () => {
       }).unwrap();
       setQueryTimestamp(Date.now());
       setSelections({});
+      setHasSelections(false);
       toast.success("Selections deleted successfully");
       console.log(`Selections deleted for Week ${weekValue + 1}!`);
     } catch (error) {
