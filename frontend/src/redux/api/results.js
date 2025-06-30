@@ -49,5 +49,9 @@ export const resultsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useCreateResultsMutation, useFetchResultsQuery } =
-  resultsApiSlice;
+export const {
+  useCreateResultsMutation,
+  useFetchResultsQuery,
+  useDeleteResultsMutation,
+  useUpdateResultsMutation,
+} = resultsApiSlice;

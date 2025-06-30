@@ -6,12 +6,16 @@ import { useSelector } from "react-redux";
 import {
   useCreateResultsMutation,
   useFetchResultsQuery,
+  useUpdateResultsMutation,
+  useDeleteResultsMutation,
 } from "@/redux/api/results.js";
 import { toast } from "react-toastify";
 
 const AdminWeeklies = () => {
   const [selections, setSelections] = useState({});
   const [createResults] = useCreateResultsMutation();
+  const [updateResults] = useUpdateResultsMutation();
+  const [deleteResults] = useDeleteResultsMutation();
   const { userInfo } = useSelector((state) => state.auth);
   const [hasSelections, setHasSelections] = useState(false);
   const [queryTimestamp, setQueryTimestamp] = useState(Date.now());
@@ -62,6 +66,46 @@ const AdminWeeklies = () => {
       console.log(`Results saved successfully for Week ${weekValue + 1}!`);
     } catch (error) {
       console.error("Error saving Results:", error);
+      toast.error(error.data.message);
+    }
+  };
+
+  const handleUpdateResults = async () => {
+    if (!userInfo?._id) return;
+
+    const selectionsArray = Object.entries(selections).map(
+      ([gameKey, team]) => ({
+        gameKey,
+        team,
+      })
+    );
+
+    try {
+      await updateResults({
+        week: weekValue,
+        winners: selectionsArray,
+      }).unwrap();
+      toast.success("Results updated successfully");
+      console.log(`Results updated for Week ${weekValue + 1}!`);
+    } catch (error) {
+      console.error("Error updating results:", error);
+      toast.error(error.data.message);
+    }
+  };
+
+  const handleDeleteResults = async () => {
+    if (!userInfo?.isAdmin) return;
+
+    try {
+      await deleteResults({
+        week: weekValue,
+      }).unwrap();
+      setQueryTimestamp(Date.now());
+      setSelections({});
+      toast.success("Results deleted successfully");
+      console.log(`Results deleted for Week ${weekValue + 1}!`);
+    } catch (error) {
+      console.error("Error deleting results:", error);
       toast.error(error.data.message);
     }
   };
@@ -126,12 +170,29 @@ const AdminWeeklies = () => {
           }
         })}
 
-        <button
-          onClick={saveToResults}
-          className="mt-4 p-3 bg-blue-500 text-white rounded"
-        >
-          Save Results
-        </button>
+        {hasSelections ? (
+          <>
+            <button
+              onClick={handleUpdateResults}
+              className="mt-4 p-3 bg-yellow-500 text-white rounded"
+            >
+              Update Selections
+            </button>
+            <button
+              onClick={handleDeleteResults}
+              className="mt-4 p-3 bg-red-500 text-white rounded"
+            >
+              Delete Selections
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={saveToResults}
+            className="mt-4 p-3 bg-blue-500 text-white rounded"
+          >
+            Save Results
+          </button>
+        )}
       </div>
     </div>
   );
