@@ -52,6 +52,15 @@ export const selectionsApiSlice = apiSlice.injectEndpoints({
         { type: "Selections", id: `${userId}-${week}` },
       ],
     }),
+    fetchAllSelections: builder.query({
+      query: ({ week }) => ({
+        url: `${SELECTIONS_URL}/${week}`, // Fetch selections by user & week
+        method: "GET",
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem("token")}`,
+        // },
+      }),
+    }),
   }),
 });
 
@@ -60,4 +69,5 @@ export const {
   useDeleteSelectionsMutation,
   useFetchSelectionsQuery,
   useUpdateSelectionsMutation,
+  useFetchAllSelectionsQuery,
 } = selectionsApiSlice;
