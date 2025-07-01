@@ -91,7 +91,7 @@ const AdminWeeklies = () => {
       console.log(`Results updated for Week ${weekValue + 1}!`);
     } catch (error) {
       console.error("Error updating results:", error);
-      toast.error(error.data.message);
+      toast.error(error.data.message || "An unexpected error occured.");
     }
   };
 
