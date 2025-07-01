@@ -6,6 +6,7 @@ import {
   useLazyFetchAllSelectionsQuery,
 } from "@/redux/api/selections.js";
 import { useSelector } from "react-redux";
+import Dropdown from "@/components/Dropdown";
 
 const Admin = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -45,7 +46,7 @@ const Admin = () => {
   //   }
   // };
   const runQuery = async () => {
-    if (!userInfo?.isAdmin) {
+    if (!userInfo?.isAdmin || selectedWeek === null) {
       console.error("User is not admin, cannot run query.");
       return;
     }
@@ -69,13 +70,16 @@ const Admin = () => {
             <p className="flex justify-center">Admin</p>
           </div>
 
-          <div>
+          <div className="flex  justify-center gap-5">
             <button
               onClick={runQuery}
               className="mt-4 p-3 bg-blue-500 text-white rounded"
             >
               Run Query
             </button>
+            <div className="flex items-center mt-3">
+              <Dropdown onSelectWeek={setSelectedWeek} />
+            </div>
           </div>
           <div>
             <button

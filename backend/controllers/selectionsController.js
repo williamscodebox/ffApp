@@ -81,6 +81,7 @@ const deleteSelections = asyncHandler(async (req, res) => {
 
 const fetchAllSelections = asyncHandler(async (req, res) => {
   const { week } = req.params;
+  const uiWeek = week + 1; // Convert to 1-based week for UI consistency
 
   const allUsersSelections = await Selection.find({ week });
 
