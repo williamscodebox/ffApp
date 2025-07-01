@@ -1,13 +1,61 @@
 import React from "react";
 import { useEffect } from "react";
-import Overview from "../../Auth/Overview";
 import AdminSidebar from "@/components/AdminSidebar";
-import DemoPage from "../TableScoreBoard/page";
+import {
+  useFetchAllSelectionsQuery,
+  useLazyFetchAllSelectionsQuery,
+} from "@/redux/api/selections.js";
+import { useSelector } from "react-redux";
 
 const Admin = () => {
+  const { userInfo } = useSelector((state) => state.auth);
+  const [triggerFetch, { data: fetchedSelections, isLoading, error }] =
+    useLazyFetchAllSelectionsQuery();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // const {
+  //   data: fetchedSelections,
+  //   isLoading,
+  //   error,
+  //   refetch: refetchSelections,
+  // } = useFetchAllSelectionsQuery(
+  //   {
+  //     week: 0,
+  //   },
+  //   {
+  //     refetchOnMountOrArgChange: true,
+  //     keepUnusedDataFor: 0,
+  //   }
+  // );
+
+  // const runQuery = async () => {
+  //   if (!userInfo?.isAdmin) {
+  //     console.error("User is not admin, cannot run query.");
+  //     return;
+  //   }
+  //   try {
+  //     await refetchSelections();
+  //     console.log("Selections re-fetched:", fetchedSelections);
+  //   } catch (err) {
+  //     console.error("Failed to refetch selections:", err);
+  //   }
+  // };
+  const runQuery = async () => {
+    if (!userInfo?.isAdmin) {
+      console.error("User is not admin, cannot run query.");
+      return;
+    }
+    try {
+      const response = await triggerFetch({ week: 0 }).unwrap();
+      console.log("Selections fetched successfully");
+      console.log("Fetched selections:", response);
+    } catch (err) {
+      console.error("Error fetching selections:", err);
+    }
+  };
 
   return (
     <div className="flex flex-row justify-between mt-10">
@@ -16,16 +64,17 @@ const Admin = () => {
       </div>
       <div className="w-[90%]">
         <div className="flex flex-col items-center text-2xl text-white bg-gray-700 h-screen pt-10">
-          {/* <div>
-            <p>ScoreBoard</p>
-          </div> */}
           <div>
             <p className="flex justify-center">Admin</p>
-            <p>Welcome to the Rankings</p>
           </div>
-          {/* <ScoreBoard /> */}
-          <div className="w-[70%] flex justify-center">
-            <DemoPage />
+
+          <div>
+            <button
+              onClick={runQuery}
+              className="mt-4 p-3 bg-blue-500 text-white rounded"
+            >
+              Run Query
+            </button>
           </div>
         </div>
       </div>

@@ -84,14 +84,20 @@ const fetchAllSelections = asyncHandler(async (req, res) => {
 
   const allUsersSelections = await Selection.find({ week });
 
-  if (!allUsersSelections) {
-    return res
-      .status(404)
-      .json({ message: `No selections found for Week ${week}` });
-    //return res.status(200).json({ week, selections: [] }); // ← explicitly empty
+  // if (!allUsersSelections) {
+  //   return res
+  //     .status(404)
+  //     .json({ message: `No selections found for Week ${week}` });
+  //   //return res.status(200).json({ week, selections: [] }); // ← explicitly empty
+  // }
+  if (allUsersSelections.length === 0) {
+    return res.status(200).json({ week, selections: [] }); // cleaner and consistent with frontend expectations
   }
 
-  res.json(allUsersSelections);
+  return res.status(200).json({
+    week,
+    selections: allUsersSelections || [],
+  });
 });
 
 export {

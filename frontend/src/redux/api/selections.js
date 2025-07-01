@@ -70,4 +70,5 @@ export const {
   useFetchSelectionsQuery,
   useUpdateSelectionsMutation,
   useFetchAllSelectionsQuery,
+  useLazyFetchAllSelectionsQuery,
 } = selectionsApiSlice;
