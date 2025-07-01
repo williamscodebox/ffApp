@@ -11,6 +11,7 @@ const Admin = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [triggerFetch, { data: fetchedSelections, isLoading, error }] =
     useLazyFetchAllSelectionsQuery();
+  const [selectedWeek, setSelectedWeek] = React.useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,7 +50,7 @@ const Admin = () => {
       return;
     }
     try {
-      const response = await triggerFetch({ week: 0 }).unwrap();
+      const response = await triggerFetch({ week: selectedWeek }).unwrap();
       console.log("Selections fetched successfully");
       console.log("Fetched selections:", response);
     } catch (err) {
@@ -74,6 +75,22 @@ const Admin = () => {
               className="mt-4 p-3 bg-blue-500 text-white rounded"
             >
               Run Query
+            </button>
+          </div>
+          <div>
+            <button
+              onClick={""}
+              className="mt-4 p-3 bg-blue-500 text-white rounded"
+            >
+              Grab Results
+            </button>
+          </div>
+          <div>
+            <button
+              onClick={""}
+              className="mt-4 p-3 bg-blue-500 text-white rounded"
+            >
+              Run Results
             </button>
           </div>
         </div>
