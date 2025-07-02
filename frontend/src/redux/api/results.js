@@ -54,4 +54,5 @@ export const {
   useFetchResultsQuery,
   useDeleteResultsMutation,
   useUpdateResultsMutation,
+  useLazyFetchResultsQuery,
 } = resultsApiSlice;
