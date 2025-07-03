@@ -1,11 +1,7 @@
 import express from "express";
 
 // controllers
-import {
-  createUser,
-  loginUser,
-  logoutCurrentUser,
-} from "../controllers/weeklyController.js";
+import { createWeekly } from "../controllers/weeklyController.js";
 
 // middlewares
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";

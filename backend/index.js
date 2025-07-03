@@ -12,6 +12,7 @@ import userRoutes from "./routes/userRoutes.js";
 import selectionsRoutes from "./routes/selectionsRoutes.js";
 import leaderboardRoutes from "./routes/leaderboardRoutes.js";
 import resultsRoutes from "./routes/resultsRoutes.js";
+import weeklyRoutes from "./routes/weeklyRoutes.js";
 
 // Configuration
 dotenv.config();
@@ -31,5 +32,6 @@ app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/selections", selectionsRoutes);
 app.use("/api/v1/leaderboard", leaderboardRoutes);
 app.use("/api/v1/results", resultsRoutes);
+app.use("/api/v1/weekly", weeklyRoutes);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
