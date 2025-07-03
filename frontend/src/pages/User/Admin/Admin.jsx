@@ -25,6 +25,7 @@ const Admin = () => {
   const [selectedResultsWeek, setSelectedResultsWeek] = React.useState(0);
   const [selectedRunWeek, setSelectedRunWeek] = React.useState(0);
   const [userSelections, setUserSelections] = useState({});
+  const [adminResults, setAdminResults] = useState({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -82,7 +83,8 @@ const Admin = () => {
         week: selectedResultsWeek,
       }).unwrap();
       console.log("Results fetched successfully");
-      console.log("Fetched results:", response);
+      setAdminResults(response);
+      //console.log("Fetched results:", response);
     } catch (err) {
       console.error("Error fetching resultss:", err);
     }
@@ -126,6 +128,12 @@ const Admin = () => {
             <div className="flex items-center mt-3">
               <Dropdown onSelectWeek={setSelectedResultsWeek} />
             </div>
+            <button
+              onClick={() => console.log(adminResults)}
+              className="mt-4 p-3 bg-blue-500 text-white rounded"
+            >
+              log Results
+            </button>
           </div>
           <div className="flex  justify-center gap-5">
             <button

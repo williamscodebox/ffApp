@@ -38,6 +38,10 @@ const fetchResults = asyncHandler(async (req, res) => {
   }
 
   res.json(results);
+  // return res.status(200).json({
+  //   week,
+  //   results: results || [],
+  // });
 });
 
 const updateResults = asyncHandler(async (req, res) => {
