@@ -1,10 +1,18 @@
-const calculateWeeklyScore = (userSelections, gameResults) => {
-  const resultMap = new Map(gameResults.map((g) => [g.gameKey, g.winner]));
-  const correctSelections = userSelections.reduce((acc, sel) => {
-    return sel.team === resultMap.get(sel.gameKey) ? acc + 1 : acc;
-  }, 0);
+export const calculateWeeklyScore = (userSelections, gameResults) => {
+  const winners = gameResults.winners;
+  const resultMap = new Map(winners.map((g) => [g.gameKey, g.team]));
+  const correctSelections = userSelections.selections[0].selections.reduce(
+    (acc, sel) => {
+      return sel.team === resultMap.get(sel.gameKey) ? acc + 1 : acc;
+    },
+    0
+  );
+  console.log("correct selections: " + correctSelections);
+  console.log(
+    "total selections: " + userSelections.selections[0].selections.length
+  );
   return {
     correctSelections,
-    totalSelections: userSelections.length,
+    totalSelections: userSelections.selections[0].selections.length,
   };
 };

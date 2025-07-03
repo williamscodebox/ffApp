@@ -12,6 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import Dropdown from "@/components/Dropdown";
 import { set } from "mongoose";
+import { calculateWeeklyScore } from "../../../../data/scoreScript.js";
 
 const Admin = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -89,6 +90,13 @@ const Admin = () => {
       console.error("Error fetching resultss:", err);
     }
   };
+  const runScores = () => {
+    if (!userInfo?.isAdmin) {
+      console.error("User is not admin, cannot run query.");
+      return;
+    }
+    console.log(calculateWeeklyScore(userSelections, adminResults));
+  };
 
   return (
     <div className="flex flex-row justify-between mt-10">
@@ -137,7 +145,7 @@ const Admin = () => {
           </div>
           <div className="flex  justify-center gap-5">
             <button
-              onClick={""}
+              onClick={runScores}
               className="mt-4 p-3 bg-blue-500 text-white rounded"
             >
               Run Results
