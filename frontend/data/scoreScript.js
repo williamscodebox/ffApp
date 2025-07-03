@@ -12,6 +12,8 @@ export const calculateWeeklyScore = (userSelections, gameResults) => {
     "total selections: " + userSelections.selections[0].selections.length
   );
   return {
+    userId: userSelections.selections[0].userId,
+    week: userSelections.selections[0].week,
     correctSelections,
     totalSelections: userSelections.selections[0].selections.length,
   };
