@@ -27,4 +27,4 @@ const updateLeaderboard = asyncHandler(async (req, res) => {
   }
 });
 
-export { fetchLeaderboard };
+export { fetchLeaderboard, updateLeaderboard };
