@@ -1,7 +1,10 @@
 import express from "express";
 
 // controllers
-import { fetchLeaderboard } from "../controllers/leaderboardController.js";
+import {
+  fetchLeaderboard,
+  updateLeaderboard,
+} from "../controllers/leaderboardController.js";
 
 // middlewares
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
@@ -9,5 +12,6 @@ import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.route("/").get(authenticate, fetchLeaderboard);
+router.route("/:week").put(authenticate, authorizeAdmin, updateLeaderboard);
 
 export default router;
