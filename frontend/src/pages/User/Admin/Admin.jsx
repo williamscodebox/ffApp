@@ -13,6 +13,8 @@ import { useSelector } from "react-redux";
 import Dropdown from "@/components/Dropdown";
 import { set } from "mongoose";
 import { calculateWeeklyScore } from "../../../../data/scoreScript.js";
+import { useCreateWeeklyMutation } from "@/redux/api/weekly.js";
+import { toast } from "react-toastify";
 
 const Admin = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -22,6 +24,8 @@ const Admin = () => {
     triggerFetchResults,
     { data: fetchedResults, isLoading: resultsLoading, error: resultsError },
   ] = useLazyFetchResultsQuery();
+  const [createWeekly] = useCreateWeeklyMutation();
+
   const [selectedWeek, setSelectedWeek] = React.useState(0);
   const [selectedResultsWeek, setSelectedResultsWeek] = React.useState(0);
   const [selectedRunWeek, setSelectedRunWeek] = React.useState(0);
@@ -90,12 +94,30 @@ const Admin = () => {
       console.error("Error fetching resultss:", err);
     }
   };
-  const runScores = () => {
+  const runScores = async () => {
     if (!userInfo?.isAdmin) {
       console.error("User is not admin, cannot run query.");
       return;
     }
     console.log(calculateWeeklyScore(userSelections, adminResults));
+    const weeklyScores = calculateWeeklyScore(userSelections, adminResults);
+
+    if (adminResults.winners.length === 0 || !adminResults) {
+      console.warn("No weekly to run.");
+      toast.error("No weekly to run.");
+      return;
+    }
+    try {
+      await createWeekly(weeklyScores).unwrap();
+
+      toast.success("Weekly saved");
+      console.log(
+        `Weekly saved successfully for Week ${userSelections.week + 1}!`
+      );
+    } catch (error) {
+      console.error("Error saving Weekly:", error);
+      toast.error(error.data.message);
+    }
   };
 
   return (
