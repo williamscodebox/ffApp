@@ -1,3 +1,4 @@
+import { syncUserScores } from "../data/syncScores.js";
 import asyncHandler from "../middlewares/asyncHandler.js";
 import User from "../models/User.js";
 
