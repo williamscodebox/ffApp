@@ -17,8 +17,8 @@ const fetchLeaderboard = asyncHandler(async (req, res) => {
 });
 
 const updateLeaderboard = asyncHandler(async (req, res) => {
-  const { week } = req.params;
-  const { weeklyScore } = req.body;
+  // const { week } = req.params;
+  // const { weeklyScore } = req.body;
   try {
     await syncUserScores();
     res.status(200).json({ message: "User scores synchronized successfully." });

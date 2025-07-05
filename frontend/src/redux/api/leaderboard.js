@@ -11,8 +11,21 @@ export const leaderboardApiSlice = apiSlice.injectEndpoints({
         //   Authorization: `Bearer ${localStorage.getItem("token")}`,
         // },
       }),
+      providesTags: (result, error) =>
+        result ? [{ type: "Leaderboard", id: "LIST" }] : [],
+    }),
+    updateLeaderboard: builder.mutation({
+      query: () => ({
+        url: `${LEADERBOARD_URL}`,
+        method: "PUT",
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem("token")}`,
+        // },
+        //body: { selections },
+      }),
     }),
   }),
 });
 
-export const { useFetchLeaderboardQuery } = leaderboardApiSlice;
+export const { useFetchLeaderboardQuery, useUpdateLeaderboardMutation } =
+  leaderboardApiSlice;

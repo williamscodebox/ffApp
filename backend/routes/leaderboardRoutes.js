@@ -12,6 +12,6 @@ import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.route("/").get(authenticate, fetchLeaderboard);
-router.route("/:week").put(authenticate, authorizeAdmin, updateLeaderboard);
+router.route("/").put(authenticate, authorizeAdmin, updateLeaderboard);
 
 export default router;

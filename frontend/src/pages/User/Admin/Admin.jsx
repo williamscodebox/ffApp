@@ -9,6 +9,7 @@ import {
   useFetchResultsQuery,
   useLazyFetchResultsQuery,
 } from "@/redux/api/results.js";
+import { useUpdateLeaderboardMutation } from "@/redux/api/leaderboard.js";
 import { useSelector } from "react-redux";
 import Dropdown from "@/components/Dropdown";
 import { set } from "mongoose";
@@ -25,6 +26,7 @@ const Admin = () => {
     { data: fetchedResults, isLoading: resultsLoading, error: resultsError },
   ] = useLazyFetchResultsQuery();
   const [createWeekly] = useCreateWeeklyMutation();
+  const [updateLeaderboard] = useUpdateLeaderboardMutation();
 
   const [selectedWeek, setSelectedWeek] = React.useState(0);
   const [selectedResultsWeek, setSelectedResultsWeek] = React.useState(0);
@@ -119,6 +121,24 @@ const Admin = () => {
       toast.error(error.data.message);
     }
   };
+  const runLeaderboard = async () => {
+    if (!userInfo?.isAdmin) {
+      console.error("User is not admin, cannot run query.");
+      return;
+    }
+
+    try {
+      await updateLeaderboard();
+
+      toast.success("Leaderboard updated");
+      console.log(
+        `Leaderboard successfully updated for Week ${userSelections.week + 1}!`
+      );
+    } catch (error) {
+      console.error("Error updating Leaderboard:", error);
+      toast.error(error.data.message);
+    }
+  };
 
   return (
     <div className="flex flex-row justify-between mt-10">
@@ -172,9 +192,14 @@ const Admin = () => {
             >
               Run Results
             </button>
-            <div className="flex items-center mt-3">
-              <Dropdown onSelectWeek={setSelectedRunWeek} />
-            </div>
+          </div>
+          <div className="flex  justify-center gap-5">
+            <button
+              onClick={runLeaderboard}
+              className="mt-4 p-3 bg-blue-500 text-white rounded"
+            >
+              Update Leaderboard
+            </button>
           </div>
         </div>
       </div>
