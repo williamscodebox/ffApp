@@ -4,9 +4,10 @@ import { DataTable } from "./data-table";
 import { useFetchLeaderboardQuery } from "@/redux/api/leaderboard";
 
 export default function DemoPage() {
-  const { data, isLoading, error } = useFetchLeaderboardQuery({
-    undefined,
+  const { data, isLoading, error } = useFetchLeaderboardQuery(undefined, {
+    pollingInterval: 30000, // every 30 sec
     refetchOnMountOrArgChange: true,
+    forceRefetch: true,
   });
 
   // async function getData() {
