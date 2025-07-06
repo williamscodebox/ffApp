@@ -30,7 +30,10 @@ const userScoreSchema = new mongoose.Schema({
 // Auto-calculate total before saving
 userScoreSchema.pre("save", function (next) {
   const scores = this.weekScores || {};
-  this.total = Object.values(scores).reduce((sum, val) => sum + (val || 0), 0);
+  this.total = Object.values(scores).reduce(
+    (sum, val) => sum + Number(val || 0),
+    0
+  );
   next();
 });
 

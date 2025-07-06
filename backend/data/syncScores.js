@@ -6,10 +6,14 @@ export const syncUserScores = async () => {
 
   // Group by user
   const userScoreMap = new Map();
+  console.log("Syncing:" + userScoreMap);
+  console.log(allWeeklyScores);
 
   allWeeklyScores.forEach((score) => {
     const key = score.userId.toString();
-    const weekKey = `Week_${score.week}`;
+    console.log(key);
+    const weekKey = `Week_${score.week + 1}`;
+    console.log(weekKey);
 
     if (!userScoreMap.has(key)) {
       userScoreMap.set(key, {
@@ -26,11 +30,17 @@ export const syncUserScores = async () => {
   for (const userData of userScoreMap.values()) {
     const { user, weekScores } = userData;
 
+    const total = Object.values(weekScores).reduce(
+      (sum, val) => sum + (val || 0),
+      0
+    );
+
     await UserScore.findOneAndUpdate(
       { user },
       {
         user,
         weekScores,
+        total,
       },
       {
         upsert: true,
