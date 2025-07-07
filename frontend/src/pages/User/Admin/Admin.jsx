@@ -102,7 +102,9 @@ const Admin = () => {
       return;
     }
     console.log(calculateWeeklyScore(userSelections, adminResults));
-    const weeklyScores = calculateWeeklyScore(userSelections, adminResults);
+    const weeklyScores = userSelections.map((selectionBlock) =>
+      calculateWeeklyScore(selectionBlock, adminResults)
+    );
 
     if (adminResults.winners.length === 0 || !adminResults) {
       console.warn("No weekly to run.");
