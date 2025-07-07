@@ -8,7 +8,7 @@ export const calculateWeeklyScore = (userSelections, gameResults) => {
   console.log("total selections: " + userSelections.selections.length);
   return {
     userId: userSelections.userId,
-    week: userSelections.week,
+    week: userSelections.week + 1,
     correctSelections,
     totalSelections: userSelections.selections.length,
   };

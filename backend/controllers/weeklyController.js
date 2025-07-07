@@ -1,35 +1,37 @@
 import asyncHandler from "../middlewares/asyncHandler.js";
 import WeeklyScore from "../models/WeeklyScore.js";
 
-const createWeekly = asyncHandler(async (req, res) => {
-  const { userId, week, correctSelections, totalSelections } = req.body;
+const bulkCreateWeekly = asyncHandler(async (req, res) => {
+  const scores = req.body;
 
-  const existingWeekly = await WeeklyScore.findOne({ userId, week });
-  if (existingWeekly) {
-    res.status(400);
-    throw new Error(`Weekly score for Week ${week + 1} already exists`);
+  if (!Array.isArray(scores)) {
+    return res.status(400).json({ message: "Expected an array of scores" });
   }
 
-  const newWeekly = new WeeklyScore({
-    userId,
-    week,
-    correctSelections,
-    totalSelections,
-  });
-
   try {
-    await newWeekly.save();
+    const ops = scores.map((score) => ({
+      updateOne: {
+        filter: { userId: score.userId, week: score.week },
+        update: {
+          $set: {
+            correctSelections: score.correctSelections,
+            totalSelections: score.totalSelections,
+          },
+        },
+        upsert: true,
+      },
+    }));
 
-    res.status(201).json({
-      _id: newWeekly.userId,
-      week: newWeekly.week,
-      correct_selections: newWeekly.correctSelections,
-      total_selections: newWeekly.totalSelections,
-    });
-  } catch (error) {
-    res.status(400);
-    throw new Error("Invalid weekly score data");
+    await WeeklyScore.bulkWrite(ops);
+    res
+      .status(200)
+      .json({ message: "Bulk weekly scores processed successfully." });
+  } catch (err) {
+    console.error("❌ Bulk write error:", err);
+    res
+      .status(500)
+      .json({ message: "Failed to process weekly scores", error: err.message });
   }
 });
 
-export { createWeekly };
+export { bulkCreateWeekly };

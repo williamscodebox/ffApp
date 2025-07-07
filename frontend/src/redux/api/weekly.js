@@ -3,7 +3,7 @@ import { WEEKLY_URL } from "../constants";
 
 export const weeklyApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    createWeekly: builder.mutation({
+    bulkCreateWeekly: builder.mutation({
       query: (data) => ({
         url: `${WEEKLY_URL}`,
         method: "POST",
@@ -13,4 +13,4 @@ export const weeklyApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useCreateWeeklyMutation } = weeklyApiSlice;
+export const { useBulkCreateWeeklyMutation } = weeklyApiSlice;

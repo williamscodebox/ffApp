@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import Dropdown from "@/components/Dropdown";
 import { set } from "mongoose";
 import { calculateWeeklyScore } from "../../../../data/scoreScript.js";
-import { useCreateWeeklyMutation } from "@/redux/api/weekly.js";
+import { useBulkCreateWeeklyMutation } from "@/redux/api/weekly.js";
 import { toast } from "react-toastify";
 
 const Admin = () => {
@@ -25,7 +25,7 @@ const Admin = () => {
     triggerFetchResults,
     { data: fetchedResults, isLoading: resultsLoading, error: resultsError },
   ] = useLazyFetchResultsQuery();
-  const [createWeekly] = useCreateWeeklyMutation();
+  const [createWeeklyBulk] = useBulkCreateWeeklyMutation();
   const [updateLeaderboard] = useUpdateLeaderboardMutation();
 
   const [selectedWeek, setSelectedWeek] = React.useState(0);
@@ -101,8 +101,8 @@ const Admin = () => {
       console.error("User is not admin, cannot run query.");
       return;
     }
-    console.log(calculateWeeklyScore(userSelections, adminResults));
-    const weeklyScores = userSelections.map((selectionBlock) =>
+    // console.log(calculateWeeklyScore(userSelections, adminResults));
+    const weeklyScores = userSelections.selections.map((selectionBlock) =>
       calculateWeeklyScore(selectionBlock, adminResults)
     );
 
@@ -112,11 +112,13 @@ const Admin = () => {
       return;
     }
     try {
-      await createWeekly(weeklyScores).unwrap();
+      await createWeeklyBulk(weeklyScores).unwrap();
 
-      toast.success("Weekly saved");
+      toast.success("Weekly scores saved");
       console.log(
-        `Weekly saved successfully for Week ${userSelections.week + 1}!`
+        `Weekly scores saved successfully for Week ${
+          parseInt(userSelections.week, 10) + 1
+        }!`
       );
     } catch (error) {
       console.error("Error saving Weekly:", error);
@@ -134,7 +136,9 @@ const Admin = () => {
 
       toast.success("Leaderboard updated");
       console.log(
-        `Leaderboard successfully updated for Week ${userSelections.week + 1}!`
+        `Leaderboard successfully updated for Week ${
+          parseInt(userSelections.week, 10) + 1
+        }!`
       );
     } catch (error) {
       console.error("Error updating Leaderboard:", error);
