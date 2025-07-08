@@ -38,33 +38,6 @@ const Admin = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // const {
-  //   data: fetchedSelections,
-  //   isLoading,
-  //   error,
-  //   refetch: refetchSelections,
-  // } = useFetchAllSelectionsQuery(
-  //   {
-  //     week: 0,
-  //   },
-  //   {
-  //     refetchOnMountOrArgChange: true,
-  //     keepUnusedDataFor: 0,
-  //   }
-  // );
-
-  // const runQuery = async () => {
-  //   if (!userInfo?.isAdmin) {
-  //     console.error("User is not admin, cannot run query.");
-  //     return;
-  //   }
-  //   try {
-  //     await refetchSelections();
-  //     console.log("Selections re-fetched:", fetchedSelections);
-  //   } catch (err) {
-  //     console.error("Failed to refetch selections:", err);
-  //   }
-  // };
   const runQuery = async () => {
     if (!userInfo?.isAdmin || selectedWeek === null) {
       console.error("User is not admin, cannot run query.");
