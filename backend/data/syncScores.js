@@ -9,7 +9,7 @@ export const syncUserScores = async () => {
 
   allWeeklyScores.forEach((score) => {
     const key = score.userId.toString();
-    const weekKey = `Week_${score.week + 1}`;
+    const weekKey = `Week_${score.week}`;
 
     if (!userScoreMap.has(key)) {
       userScoreMap.set(key, {
